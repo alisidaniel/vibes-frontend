@@ -1,25 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext, useEffect, useState } from "react";
+import "./App.css";
+import { ThemeProvider } from "styled-components";
+import {
+  BrowserRouter,
+  Route,
+  Switch,
+  Redirect,
+  useHistory,
+} from "react-router-dom";
+import { Modal } from "@wigxel/react-components/lib/cards";
+import Theme from "./styles/Theme";
+
+//Views
+import Login from "./views/Login";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Modal.Provider>
+      <ThemeProvider theme={Theme}>
+        <BrowserRouter>
+          <Switch>
+            <Route path="/" component={Login} />
+            <Route path="/login" component={Login} />
+            <Route path="*" component={NotFound} />
+          </Switch>
+        </BrowserRouter>
+      </ThemeProvider>
+    </Modal.Provider>
   );
 }
+
+const MainDashboard = () => {
+  return (
+    <div>
+      <p>Hello MainDashboard</p>
+    </div>
+  );
+};
+
+const NotFound = () => (
+  <div>
+    <span>
+      404 | <b>NOT FOUND</b>
+    </span>
+  </div>
+);
 
 export default App;
