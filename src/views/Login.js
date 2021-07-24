@@ -13,13 +13,21 @@ export default function Login() {
   // const [loading, setLoading] = useState(true);
 
   return (
-    <div class="w-full h-screen">
-      <div className="flex justify-center py-48 border-3 border-red">
-        <form className="w-3/12">
-          <hgroup className="mb-2">
-            {/* <H1 bold className="text-_2 uppercase">
-              Login
-            </H1> */}
+    <div class="w-full h-screen w-screen body">
+      <div className="border-b head">
+        <div className="bg-header1 headerIcon"></div>
+        <div className="flex justify-center items-center py-6">
+          <p className="uppercase h1">vibes</p>
+        </div>
+      </div>
+      <div className="flex justify-end -mt-10 head2">
+        <div className="headerIcon2 -mr-2"></div>
+      </div>
+
+      <div className="flex justify-center py-20 px-10">
+        <form className="w-96">
+          <hgroup className="mb-2 text-center">
+            <p className="h4 uppercase">login</p>
             {/* <P>
               <span className="text-xs text-_2">
                 Enter your login details to gain access to your account.
