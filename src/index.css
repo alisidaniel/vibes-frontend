@@ -3,10 +3,11 @@
 @tailwind utilities;
 
 .body {
-  background-color: white;
+  /* background-color: rgb(44, 42, 42); */
+  background: black url("/src/assets/pm.png") no-repeat fixed center;
 }
 .head {
-  background-color: white !important;
+  background-color: black !important;
   position: relative;
 }
 .head2 {
@@ -34,6 +35,7 @@
   font-size: 12px;
   line-height: 16px;
   letter-spacing: 0.5em;
+  color: white;
 }
 .h2 {
   font-family: "DM Sans";
@@ -49,6 +51,7 @@
   font-weight: bold;
   font-size: 32px;
   line-height: 42px;
+  color: white;
 }
 
 .btn_h1 {
@@ -79,4 +82,33 @@
   font-size: 32px;
   line-height: 42px;
   letter-spacing: -0.08em;
+}
+.subtitle {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 23px;
+  letter-spacing: -0.06em;
+  color: #1246fe;
+}
+
+.card {
+  background: rgba(239, 239, 239, 1);
+}
+
+.card-subtitle {
+  background: #c4c4c4;
+  box-shadow: -16px 16px 14px rgba(0, 0, 0, 0.06);
+}
+.vibes-title {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+
+  letter-spacing: -0.08em;
+
+  color: #333333;
 }

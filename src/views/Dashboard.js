@@ -5,7 +5,7 @@ import React, { useState, useContext, useEffect } from "react";
 // import { H1 } from "../components/Typography/Heading";
 // import { P } from "@wigxel/react-components/lib/typography";
 // import Button from "../components/Buttons";
-import { Lock, Mail, Camera } from "react-feather";
+import { Camera } from "react-feather";
 // import { Navbar } from "../components/Navbar";
 
 export default function Dashboard() {

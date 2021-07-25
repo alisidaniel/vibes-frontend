@@ -14,6 +14,8 @@ import Theme from "./styles/Theme";
 //Views
 import Login from "./views/Login";
 import Dashboard from "./views/Dashboard";
+import Events from "./views/Events";
+import EventDetails from "./views/EventDetails";
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
             <Route exact path="/" component={Login} />
             <Route path="/login" component={Login} />
             <Route path="/dashboard" component={Dashboard} />
+            <Route path="/vibes" component={Events} />
+            <Route path="/history" component={EventDetails} />
             <Route path="*" component={NotFound} />
           </Switch>
         </BrowserRouter>
