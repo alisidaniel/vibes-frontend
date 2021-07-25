@@ -13,6 +13,7 @@ import Theme from "./styles/Theme";
 
 //Views
 import Login from "./views/Login";
+import Dashboard from "./views/Dashboard";
 
 function App() {
   return (
@@ -20,8 +21,9 @@ function App() {
       <ThemeProvider theme={Theme}>
         <BrowserRouter>
           <Switch>
-            <Route path="/" component={Login} />
+            <Route exact path="/" component={Login} />
             <Route path="/login" component={Login} />
+            <Route path="/dashboard" component={Dashboard} />
             <Route path="*" component={NotFound} />
           </Switch>
         </BrowserRouter>

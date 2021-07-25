@@ -25,7 +25,7 @@ export default function Login() {
       </div>
 
       <div className="flex justify-center py-20 px-10">
-        <form className="w-96">
+        <form className="w-96" action="/dashboard">
           <hgroup className="mb-2 text-center">
             <p className="h4 uppercase">login</p>
             {/* <P>

@@ -35,6 +35,13 @@
   line-height: 16px;
   letter-spacing: 0.5em;
 }
+.h2 {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 21px;
+}
 
 .h4 {
   font-family: "DM Sans";
@@ -50,6 +57,26 @@
   font-weight: bold;
   font-size: 16px;
   line-height: 21px;
-
   text-align: center;
+}
+
+.home {
+  background: linear-gradient(101.77deg, #000000 0%, #d55cff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 42px;
+  letter-spacing: -0.08em;
+}
+
+.welcome {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 32px;
+  line-height: 42px;
+  letter-spacing: -0.08em;
 }
