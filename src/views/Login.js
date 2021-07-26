@@ -38,7 +38,7 @@ export default function Login() {
               Username
             </label>
             <input
-              className="shadow appearance-none border-none rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border-none rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
               id="username"
               type="text"
               placeholder="Username"

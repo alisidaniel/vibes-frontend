@@ -1,16 +1,10 @@
 import React, { useState, useContext, useEffect } from "react";
-// import { Link } from "react-router-dom";
-// import { Labelled } from "@wigxel/react-components/lib/form";
-// import { useForm } from "react-hook-form";
-// import { H1 } from "../components/Typography/Heading";
-// import { P } from "@wigxel/react-components/lib/typography";
-// import Button from "../components/Buttons";
+
 import { List } from "react-feather";
-// import { Navbar } from "../components/Navbar";
-import vibesImage from "../assets/pm2.jpeg";
+import vibesImage from "../assets/pm.png";
 
 export default function Events() {
-  //   const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   return (
     <div className="w-full h-screen w-screen">
       <div className="flex flex-row justify-between p-6 border-b">
@@ -39,17 +33,13 @@ export default function Events() {
           <div className="card w-full rounded-full h-32 mt-5 px-5 py-5">
             <div className="card-subtitle rounded-full h-20 w-full px-2 py-2">
               <div className="flex flex-row justify-start items-center">
-                <div className="w-16 h-16 bg-gray-light rounded-full">
-                  <img
-                    src={vibesImage}
-                    className="h-16 w-16 rounded-full"
-                    atl="logo"
-                  />
+                <div className="w-16 h-16 bg-black shadow-lg rounded-full">
+                  <img src={vibesImage} className="h-16 w-16" atl="logo" />
                 </div>
                 <div className="ml-4 vibes-title flex flex-row justify-evenly items-around w-4/5">
                   <span> Obi Cubana mums burial.</span>
-                  <div className="flex flex-row">
-                    <List className /> 20
+                  <div className="flex flex-row text-orange-light">
+                    <List /> <span className="text-white">20</span>
                   </div>
                 </div>
               </div>

@@ -99,14 +99,14 @@
 }
 
 .card {
-  background: #243b55;
+  background: white;
   /* background: #d66d75; */
   /* rgba(239, 239, 239, 1) */
 }
 
 .card-subtitle {
   /* rgb(250, 238, 238) */
-  background: white;
+  background: #cccaca;
   box-shadow: -16px 16px 14px rgba(0, 0, 0, 0.06);
   /* opacity: 0.5; */
 }
@@ -119,11 +119,21 @@
 
   letter-spacing: -0.08em;
 
-  color: #333333;
+  color: white;
 }
 
 .admin-card {
   background: linear-gradient(101.77deg, #141e30 0%, #243b55 100%);
   /* -webkit-background-clip: text; */
   /* -webkit-text-fill-color: transparent; */
+}
+
+.toggle-checkbox:checked {
+  @apply: right-0 border-green;
+  right: 0;
+  border-color: #68d391;
+}
+.toggle-checkbox:checked + .toggle-label {
+  @apply: bg-green-400;
+  background-color: #68d391;
 }

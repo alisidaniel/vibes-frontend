@@ -1,13 +1,13 @@
 import React, { useState, useContext, useEffect } from "react";
-import { List } from "react-feather";
-import vibesImage from "../assets/pm2.jpeg";
+import { ArrowLeft } from "react-feather";
+import { Link, useParams, useHistory } from "react-router-dom";
 import { Table } from "../components/Table";
+import RefreshButton from "../components/Buttons/RefreshButton";
 import { StatusBadge, isStatus } from "../components/Badge";
-import { Footer } from "../components/Footer";
 
-export default function EventDetails() {
+export default function Tickets() {
   //   const [loading, setLoading] = useState(true);
-
+  const history = useHistory();
   const dumData = [
     {
       index: 0,
@@ -29,7 +29,6 @@ export default function EventDetails() {
       me: "Alisi Joe",
       you: "Alisi Joe",
       him: "Alisi Joe",
-      status: "closed",
     },
     {
       name: "Alisi Joe",
@@ -43,7 +42,6 @@ export default function EventDetails() {
       me: "Alisi Joe",
       you: "Alisi Joe",
       him: "Alisi Joe",
-      status: "active",
     },
     {
       index: 4,
@@ -51,7 +49,6 @@ export default function EventDetails() {
       me: "Alisi Joe",
       you: "Alisi Joe",
       him: "Alisi Joe",
-      status: "success",
     },
     {
       index: 5,
@@ -59,7 +56,6 @@ export default function EventDetails() {
       me: "Alisi Joe",
       you: "Alisi Joe",
       him: "Alisi Joe",
-      status: "approved",
     },
   ];
   return (
@@ -84,15 +80,26 @@ export default function EventDetails() {
           </a>
         </div>
       </div>
-
+      <div className="flex flex-row justify-between sm:px-4 md:px-4 xs:px-4 lg:px-20 py-3">
+        <RefreshButton
+          onClick={() => window.location.reload(false)}
+          loading={false}
+        />
+        <button
+          onClick={() => history.goBack()}
+          className="flex flex-row text-black px-2 py-2 rounded-lg"
+        >
+          <ArrowLeft />
+          <span> Back</span>
+        </button>
+      </div>
       <div className="lg:p-20">
         <Table
-          columns={["S/N", "Ticket", "Scanner Name", "Event", "Status", ""]}
+          columns={["S/N", "Ticket", "Scanner Name", "Event", "Time"]}
           items={dumData}
           renderRow={renderPage}
         />
       </div>
-      <Footer />
     </div>
   );
 }
@@ -101,22 +108,16 @@ const renderPage = (item, index) => {
   console.log(item);
   return (
     <tr className={`${index % 2 === 0 ? "bg-gray-light" : ""}`}>
-      {[
-        index + 1,
-        item.name,
-        item.me,
-        item.you,
-        item.him,
-        item.status,
-        null,
-      ].map((text, idx) => (
-        <td
-          key={idx}
-          className={`font-light py-2 ${idx === 0 ? "pl-4" : "px-2"}`}
-        >
-          {isStatus(text) ? <StatusBadge status={String(text)} /> : text}
-        </td>
-      ))}
+      {[index + 1, item.name, item.me, item.you, "2 days ago"].map(
+        (text, idx) => (
+          <td
+            key={idx}
+            className={`font-light py-2 ${idx === 0 ? "pl-4" : "px-2"}`}
+          >
+            {isStatus(text) ? <StatusBadge status={String(text)} /> : text}
+          </td>
+        )
+      )}
     </tr>
   );
 };

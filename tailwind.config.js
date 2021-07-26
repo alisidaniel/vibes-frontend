@@ -13,6 +13,11 @@ module.exports = {
       green: "#33cc33",
       btn_red: "#fecaca",
       btn_green: "#a7f3d0",
+      tab_blue: "#243b55",
+      orange: {
+        light: "#f45c43",
+        light2: "#ff9966",
+      },
       blue: {
         light: "#85d7ff",
         light2: "#1246FE",
