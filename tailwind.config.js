@@ -10,9 +10,13 @@ module.exports = {
       header2: "rgba(106, 137, 248, 0.75)",
       white: "#FFFFFF",
       black: "#000000",
+      green: "#33cc33",
+      btn_red: "#fecaca",
+      btn_green: "#a7f3d0",
       blue: {
         light: "#85d7ff",
         light2: "#1246FE",
+        light3: "#33a6cc",
         DEFAULT: "#1fb6ff",
         dark: "#009eeb",
       },

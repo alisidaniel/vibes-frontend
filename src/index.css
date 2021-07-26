@@ -37,6 +37,11 @@
   letter-spacing: 0.5em;
   color: white;
 }
+.h6 {
+  font-size: 40px;
+  font-weight: bold;
+  line-height: 16px;
+}
 .h2 {
   font-family: "DM Sans";
   font-style: normal;
@@ -95,11 +100,13 @@
 
 .card {
   background: rgba(239, 239, 239, 1);
+  /* background: #d66d75; */
 }
 
 .card-subtitle {
-  background: #c4c4c4;
+  background: rgb(250, 238, 238);
   box-shadow: -16px 16px 14px rgba(0, 0, 0, 0.06);
+  /* opacity: 0.5; */
 }
 .vibes-title {
   font-family: "DM Sans";
@@ -111,4 +118,10 @@
   letter-spacing: -0.08em;
 
   color: #333333;
+}
+
+.admin-card {
+  background: linear-gradient(101.77deg, #141e30 0%, #243b55 100%);
+  /* -webkit-background-clip: text; */
+  /* -webkit-text-fill-color: transparent; */
 }

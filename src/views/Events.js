@@ -35,9 +35,9 @@ export default function Events() {
       </div>
 
       <div className="sm:px-10 xs:px-20 md:px-24 xl:px-56 lg:px-40">
-        <a href="/login">
-          <div className="card w-full h-32 mt-5 px-5 py-5">
-            <div className="card-subtitle h-20 w-full px-2 py-2">
+        <a href="/history">
+          <div className="card w-full rounded-full h-32 mt-5 px-5 py-5">
+            <div className="card-subtitle rounded-full h-20 w-full px-2 py-2">
               <div className="flex flex-row justify-start items-center">
                 <div className="w-16 h-16 bg-gray-light rounded-full">
                   <img

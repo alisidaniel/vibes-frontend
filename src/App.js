@@ -13,9 +13,11 @@ import Theme from "./styles/Theme";
 
 //Views
 import Login from "./views/Login";
-import Dashboard from "./views/Dashboard";
+import Home from "./views/Home";
 import Events from "./views/Events";
 import EventDetails from "./views/EventDetails";
+import Dashboard from "./views/Dashboard";
+import ForgotPassword from "./views/ForgotPassword";
 
 function App() {
   return (
@@ -25,9 +27,11 @@ function App() {
           <Switch>
             <Route exact path="/" component={Login} />
             <Route path="/login" component={Login} />
-            <Route path="/dashboard" component={Dashboard} />
+            <Route path="/home" component={Home} />
             <Route path="/vibes" component={Events} />
             <Route path="/history" component={EventDetails} />
+            <Route path="/forgot/password" component={ForgotPassword} />
+            <Route path="/dashboard" component={Dashboard} />
             <Route path="*" component={NotFound} />
           </Switch>
         </BrowserRouter>

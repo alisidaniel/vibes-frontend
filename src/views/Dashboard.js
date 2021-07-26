@@ -1,40 +1,62 @@
 import React, { useState, useContext, useEffect } from "react";
-// import { Link } from "react-router-dom";
-// import { Labelled } from "@wigxel/react-components/lib/form";
-// import { useForm } from "react-hook-form";
-// import { H1 } from "../components/Typography/Heading";
-// import { P } from "@wigxel/react-components/lib/typography";
-// import Button from "../components/Buttons";
-import { Camera } from "react-feather";
-// import { Navbar } from "../components/Navbar";
+import { UserPlus, Monitor } from "react-feather";
+import vibesImage from "../assets/pm.png";
 
-export default function Dashboard() {
+export default function Home() {
   //   const [loading, setLoading] = useState(true);
   return (
     <div className="w-full h-screen w-screen">
       <div className="flex flex-row justify-between p-6 border-b">
         <div className="">
           <p className="uppercase h1">vibes</p>
-          <p className="uppercase home">Home</p>
+          <p className="uppercase home">Dashboard</p>
         </div>
         <div className="flex flex-row justify-center items-center space-x-4">
           <span className="h2">Hi, Dani</span>
           <div className="w-10 h-10 bg-gray-light rounded-full"></div>
         </div>
       </div>
-      <div className="flex-col grid justify-center items-center py-20 px-10">
-        <div className="flex justify-center">
-          <p className="welcome">Welcome to Vibes</p>
+
+      <div className="mt-4">
+        <div className="flex justify-center items-center sm:px-10 xs:px-20 md:px-24 xl:px-56 lg:px-40 py-2">
+          <div className="admin-card w-96 lg:w-full border-shadow-lg border shadow-lg bg-black h-56 xs:p-3 xs:p-2 sm:p-2 sm:p-2 rounded-xl">
+            <div className="flex flex-row justify-between p-10">
+              <span className="text-white">
+                <Monitor />
+              </span>
+              <div className="text-white font-bold">Events</div>
+            </div>
+            <div className="flex flex-row justify-between">
+              <div className="p-10">
+                <span className="text-white h6">Total</span>
+                <div className="text-white font-bold text-lg">100</div>
+              </div>
+              <div className="h-20 w-20 pt-5">
+                <img src={vibesImage} alt="logo" />
+              </div>
+            </div>
+          </div>
         </div>
-        <div>
-          <p className="">Click button to start scanning.</p>
+
+        <div className="flex justify-center items-center sm:px-10 xs:px-20 md:px-24 xl:px-56 lg:px-40 py-2">
+          <div className="admin-card w-96 lg:w-full border-shadow-lg border shadow-lg bg-black h-56 xs:p-3 xs:p-2 sm:p-2 sm:p-2 rounded-xl">
+            <div className="flex flex-row justify-between p-10">
+              <span className="text-white">
+                <UserPlus />
+              </span>
+              <div className="text-white font-bold">Scanners</div>
+            </div>
+            <div className="flex flex-row justify-between">
+              <div className="p-10">
+                <span className="text-white h6">Total</span>
+                <div className="text-white font-bold text-lg">100</div>
+              </div>
+              <div className="h-20 w-20 pt-5">
+                <img src={vibesImage} alt="logo" />
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div className="flex justify-center">
-        <button className="flex flex-row bg-black p-3 text-white px-12 space-x-3">
-          <Camera size={30} color="white" />
-          <p className="font-bold">Scan</p>
-        </button>
       </div>
     </div>
   );
