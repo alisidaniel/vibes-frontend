@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 
 export const Table = (props) => {
   return (
-    <table className="table w-full rounded-lg border border-gray-100">
+    <table className="table w-full rounded-lg ">
       <thead className="select-none">
         <tr>
           {props.columns.map((text, idx) => (

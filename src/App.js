@@ -18,6 +18,8 @@ import Events from "./views/Events";
 import EventDetails from "./views/EventDetails";
 import Dashboard from "./views/Dashboard";
 import ForgotPassword from "./views/ForgotPassword";
+import EventList from "./views/EventList";
+import Scanners from "./views/Scanners";
 
 function App() {
   return (
@@ -28,10 +30,12 @@ function App() {
             <Route exact path="/" component={Login} />
             <Route path="/login" component={Login} />
             <Route path="/home" component={Home} />
-            <Route path="/vibes" component={Events} />
+            <Route path="/events" component={Events} />
             <Route path="/history" component={EventDetails} />
             <Route path="/forgot/password" component={ForgotPassword} />
             <Route path="/dashboard" component={Dashboard} />
+            <Route path="/dashboard/events" component={EventList} />
+            <Route path="/dashboard/scanners" component={Scanners} />
             <Route path="*" component={NotFound} />
           </Switch>
         </BrowserRouter>
