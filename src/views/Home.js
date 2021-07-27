@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Camera, Database } from "react-feather";
+import { Camera, Database, CameraOff } from "react-feather";
 import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
 
@@ -12,6 +12,7 @@ export default function Home() {
     const qrResult = document.getElementById("qr-result");
     const outputData = document.getElementById("outputData");
     const btnScanQR = document.getElementById("btn-scan-qr");
+    const btnStopCamera = document.getElementById("btn-stop-camera");
     let scanning = false;
     qrcode.callback = (res) => {
       if (res) {
@@ -24,6 +25,15 @@ export default function Home() {
         canvasElement.hidden = true;
         btnScanQR.hidden = false;
       }
+    };
+    btnStopCamera.onclick = () => {
+      scanning = false;
+      video.srcObject.getTracks().forEach((track) => {
+        track.stop();
+      });
+      qrResult.hidden = false;
+      canvasElement.hidden = true;
+      btnScanQR.hidden = false;
     };
     btnScanQR.onclick = () => {
       navigator.mediaDevices
@@ -40,6 +50,7 @@ export default function Home() {
           scan();
         });
     };
+
     function tick() {
       canvasElement.height = video.videoHeight;
       canvasElement.width = video.videoWidth;
@@ -77,7 +88,7 @@ export default function Home() {
           <canvas className="w-full" hidden="" id="qr-canvas"></canvas>
         </div>
       </div>
-      <div className="flex justify-center pt-24">
+      <div className="flex flex-row justify-center space-x-2 pt-24">
         <button
           type="button"
           id="btn-scan-qr"
@@ -85,6 +96,14 @@ export default function Home() {
         >
           <Camera size={30} color="white" />
           <p className="font-bold">Scan</p>
+        </button>
+        <button
+          type="button"
+          id="btn-stop-camera"
+          className="flex flex-row bg-black p-3 text-white px-12 space-x-3"
+        >
+          <CameraOff size={30} color="white" />
+          <p className="font-bold">Stop</p>
         </button>
       </div>
       <div className="flex flex-row justify-center items-center">
