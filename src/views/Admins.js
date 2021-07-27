@@ -4,8 +4,8 @@ import { Modal, Card } from "@wigxel/react-components/lib/cards";
 import { Table } from "../components/Table";
 import { isStatus } from "../components/Badge";
 import { Footer } from "../components/Footer";
-import { Header } from "../components/Header";
 import { HeadingGroup } from "../components/Typography/Heading";
+import { Header } from "../components/Header";
 
 export default function Scanners() {
   const { toggle } = Modal.useModal();
@@ -14,55 +14,42 @@ export default function Scanners() {
       index: 0,
       name: "Alisi Daniel",
       me: "Alisi Joe",
-      you: "Alisi Joe",
-      him: "Alisi Joe",
       status: "Disable",
     },
     {
       index: 1,
       name: "Alisi Joe",
       me: "Alisi Joe",
-      you: "Alisi Joe",
-      him: "Alisi Joe",
       status: "Enable",
     },
     {
       index: 2,
       name: "Alisi Joe",
       me: "Alisi Joe",
-      you: "Alisi Joe",
-      him: "Alisi Joe",
       status: "Enable",
     },
     {
       name: "Alisi Joe",
       me: "Alisi Joe",
       you: "Alisi Joe",
-      him: "Alisi Joe",
       status: "Disable",
     },
     {
       index: 3,
       name: "Alisi Joe",
       me: "Alisi Joe",
-      you: "Alisi Joe",
-      him: "Alisi Joe",
       status: "Enable",
     },
     {
       index: 4,
       name: "Alisi Joe",
       me: "Alisi Joe",
-      you: "Alisi Joe",
-      him: "Alisi Joe",
       status: "Disable",
     },
     {
       index: 5,
       name: "Alisi Joe",
       me: "Alisi Joe",
-      you: "Alisi Joe",
-      him: "Alisi Joe",
       status: "Disable",
     },
   ];
@@ -95,7 +82,7 @@ export default function Scanners() {
 
       <div className="lg:p-20">
         <Table
-          columns={["S/N", "Ticket", "Scanner Name", "Event", "Status", ""]}
+          columns={["S/N", "Username", "Email", "Date Created", ""]}
           items={dumData}
           renderRow={renderPage}
         />
@@ -103,8 +90,8 @@ export default function Scanners() {
       <Modal name="create-scanner" size="sm">
         <Card style={{ backgroundColor: "white" }}>
           <HeadingGroup
-            heading="Create Scanner"
-            subHeading="Create new scanner for vibe events."
+            heading="Create Admin"
+            subHeading="Create new admin for vibe events."
           />
           <form>
             <div className="mb-4">
@@ -163,7 +150,7 @@ export default function Scanners() {
 const renderPage = (item, index) => {
   return (
     <tr className={`${index % 2 === 0 ? "bg-gray-light" : ""}`}>
-      {[index + 1, item.name, item.me, item.you, item.status, null].map(
+      {[index + 1, item.name, item.me, item.you, item.status].map(
         (text, idx) => (
           <td
             key={idx}

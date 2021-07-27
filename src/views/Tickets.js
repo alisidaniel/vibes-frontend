@@ -1,12 +1,12 @@
 import React, { useState, useContext, useEffect } from "react";
 import { ArrowLeft } from "react-feather";
-import { Link, useParams, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { Table } from "../components/Table";
 import RefreshButton from "../components/Buttons/RefreshButton";
 import { StatusBadge, isStatus } from "../components/Badge";
+import { Header } from "../components/Header";
 
 export default function Tickets() {
-  //   const [loading, setLoading] = useState(true);
   const history = useHistory();
   const dumData = [
     {
@@ -60,23 +60,17 @@ export default function Tickets() {
   ];
   return (
     <div className="w-full h-screen w-screen">
-      <div className="flex flex-row justify-between p-6 border-b">
-        <div className="">
-          <p className="uppercase h1">vibes</p>
-          <a href="#">
-            <p className="uppercase home">Home</p>
-          </a>
-        </div>
-        <div className="flex flex-row justify-center items-center space-x-4">
-          <span className="h2">Hi, Dani</span>
-          <div className="w-10 h-10 bg-gray-light rounded-full"></div>
-        </div>
-      </div>
+      <Header
+        appName="vibes"
+        link="/dashboard"
+        username="Dani"
+        title="Dasboard"
+      />
       <div className="flex flex-row mt-8">
-        <div className="px-4 py-4 bg-blue-light2"></div>
+        <div className="px-4 py-4 rounded-r-lg bg-gray-light"></div>
         <div className="mt-1 ml-2">
           <a href="#">
-            <p className="subtitle">Scanned results</p>
+            <p className="font-bold">Scanned results</p>
           </a>
         </div>
       </div>

@@ -22,6 +22,7 @@ import ForgotPassword from "./views/ForgotPassword";
 import EventList from "./views/EventList";
 import Scanners from "./views/Scanners";
 import Tickets from "./views/Tickets";
+import Admins from "./views/Admins";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
             <Route exact path="/dashboard/events" component={EventList} />
             <Route path="/dashboard/scanners" component={Scanners} />
             <Route path="/dashboard/events/tickets" component={Tickets} />
+            <Route path="/dashboard/admins" component={Admins} />
             <Route path="*" component={NotFound} />
           </Switch>
         </BrowserRouter>

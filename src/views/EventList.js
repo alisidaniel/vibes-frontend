@@ -1,30 +1,25 @@
 import React, { useState, useContext, useEffect } from "react";
 import { List, ArrowLeft } from "react-feather";
-import { Link, useParams, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import RefreshButton from "../components/Buttons/RefreshButton";
+import { Footer } from "../components/Footer";
+import { Header } from "../components/Header";
 
 export default function EventList() {
-  //   const [loading, setLoading] = useState(true);
   const history = useHistory();
   return (
     <div className="w-full h-screen w-screen">
-      <div className="flex flex-row justify-between p-6 border-b">
-        <div className="">
-          <p className="uppercase h1">vibes</p>
-          <a href="#">
-            <p className="uppercase home">Home</p>
-          </a>
-        </div>
-        <div className="flex flex-row justify-center items-center space-x-4">
-          <span className="h2">Hi, Dani</span>
-          <div className="w-10 h-10 bg-gray-light rounded-full"></div>
-        </div>
-      </div>
+      <Header
+        appName="vibes"
+        link="/dashboard"
+        username="Dani"
+        title="Dashboard"
+      />
       <div className="flex flex-row mt-8 mb-8">
-        <div className="px-4 py-4 bg-blue-light2"></div>
+        <div className="px-4 py-4 rounded-r-lg bg-gray-light"></div>
         <div className="mt-1 ml-2">
           <a href="#">
-            <p className="subtitle">Recent Events</p>
+            <p className="font-bold">Recent Events</p>
           </a>
         </div>
       </div>
@@ -43,42 +38,20 @@ export default function EventList() {
         </button>
       </div>
 
-      <div className="md:px-16 xl:px-56 lg:px-20">
+      <div className="md:px-16 xl:px-56 lg:px-20 mb-4">
         <a href="/dashboard/events/tickets">
-          <div className="card w-full h-12">
-            <div class="border-b border-gray-light">
-              <div className="ml-4 border-black vibes-title flex flex-row justify-between items-around w-4/5 pb-3">
-                <span className="text-orange-light hover:text-blue-dark text-xl flex flex-row space-x-2 justify-center items-center">
-                  <div className="text-black">
-                    <List />
-                  </div>
-                  <Link to="/dashboard/events/tickets">
-                    Obi Cubana mums burial.
-                  </Link>
-                  <span className="text-black">20</span>
-                </span>
+          <div className="w-80 px-2 md:w-full lg:w-full h-19 shadow-lg rounded-lg flex flex-row space-x-2">
+            <div className="bg-purple w-2 rounded-l-lg"></div>
+            <div className="flex flex-row justify-center items-center space-x-3">
+              <div className="flex event-card rounded-full w-12 h-12 justify-center items-center text-white font-bold">
+                <span>Ba</span>
               </div>
-            </div>
-          </div>
-        </a>
-        <a href="/dashboard/events/tickets">
-          <div className="card w-full h-12">
-            <div class="border-b border-gray-light">
-              <div className="ml-4 border-black vibes-title flex flex-row justify-between items-around w-4/5 pb-3">
-                <span className="text-orange-light hover:text-blue-dark text-xl flex flex-row space-x-2 justify-center items-center">
-                  <div className="text-black">
-                    <List />
-                  </div>
-                  <Link to="/dashboard/events/tickets">
-                    Obi Cubana mums burial.
-                  </Link>
-                  <span className="text-black">20</span>
-                </span>
-              </div>
+              <div className="font-bold">Banjoko</div>
             </div>
           </div>
         </a>
       </div>
+      <Footer />
     </div>
   );
 }

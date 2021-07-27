@@ -110,15 +110,14 @@
   box-shadow: -16px 16px 14px rgba(0, 0, 0, 0.06);
   /* opacity: 0.5; */
 }
+
 .vibes-title {
   font-family: "DM Sans";
   font-style: normal;
   font-weight: bold;
   font-size: 16px;
   line-height: 24px;
-
   letter-spacing: -0.08em;
-
   color: white;
 }
 
@@ -126,6 +125,10 @@
   background: linear-gradient(101.77deg, #141e30 0%, #243b55 100%);
   /* -webkit-background-clip: text; */
   /* -webkit-text-fill-color: transparent; */
+}
+
+.event-card {
+  background: linear-gradient(101.77deg, #000000 0%, #d55cff 100%);
 }
 
 .toggle-checkbox:checked {

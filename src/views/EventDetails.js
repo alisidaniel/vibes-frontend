@@ -1,13 +1,10 @@
 import React, { useState, useContext, useEffect } from "react";
-import { List } from "react-feather";
-import vibesImage from "../assets/pm2.jpeg";
 import { Table } from "../components/Table";
 import { StatusBadge, isStatus } from "../components/Badge";
 import { Footer } from "../components/Footer";
+import { Header } from "../components/Header";
 
 export default function EventDetails() {
-  //   const [loading, setLoading] = useState(true);
-
   const dumData = [
     {
       index: 0,
@@ -64,20 +61,9 @@ export default function EventDetails() {
   ];
   return (
     <div className="w-full h-screen w-screen">
-      <div className="flex flex-row justify-between p-6 border-b">
-        <div className="">
-          <p className="uppercase h1">vibes</p>
-          <a href="#">
-            <p className="uppercase home">Home</p>
-          </a>
-        </div>
-        <div className="flex flex-row justify-center items-center space-x-4">
-          <span className="h2">Hi, Dani</span>
-          <div className="w-10 h-10 bg-gray-light rounded-full"></div>
-        </div>
-      </div>
+      <Header appName="vibes" link="/home" username="Dani" title="Home" />
       <div className="flex flex-row mt-8">
-        <div className="px-4 py-4 bg-blue-light2"></div>
+        <div className="px-4 py-4 rounded-r-lg bg-gray-light"></div>
         <div className="mt-1 ml-2">
           <a href="#">
             <p className="subtitle">Scanned results</p>

@@ -1,27 +1,13 @@
 import React, { useState, useContext, useEffect } from "react";
-// import { Link } from "react-router-dom";
-// import { Labelled } from "@wigxel/react-components/lib/form";
-// import { useForm } from "react-hook-form";
-// import { H1 } from "../components/Typography/Heading";
-// import { P } from "@wigxel/react-components/lib/typography";
-// import Button from "../components/Buttons";
-import { Camera } from "react-feather";
-// import { Navbar } from "../components/Navbar";
+import { Camera, Database } from "react-feather";
+import { Footer } from "../components/Footer";
+import { Header } from "../components/Header";
 
 export default function Home() {
   //   const [loading, setLoading] = useState(true);
   return (
     <div className="w-full h-screen w-screen">
-      <div className="flex flex-row justify-between p-6 border-b">
-        <div className="">
-          <p className="uppercase h1">vibes</p>
-          <p className="uppercase home">Home</p>
-        </div>
-        <div className="flex flex-row justify-center items-center space-x-4">
-          <span className="h2">Hi, Dani</span>
-          <div className="w-10 h-10 bg-gray-light rounded-full"></div>
-        </div>
-      </div>
+      <Header appName="vibes" link="/home" username="Dani" title="Home" />
       <div className="flex-col grid justify-center items-center py-20 px-10">
         <div className="flex justify-center">
           <p className="welcome">Welcome to Vibes</p>
@@ -35,6 +21,18 @@ export default function Home() {
           <Camera size={30} color="white" />
           <p className="font-bold">Scan</p>
         </button>
+      </div>
+      <div className="py-16">
+        <div className="flex flex-row justify-center space-x-2">
+          <Database />
+          <span className="font-bold">Scanned Data</span>
+        </div>
+        <div className="flex justify-center">
+          <span className="font-bold">200</span>
+        </div>
+      </div>
+      <div>
+        <Footer />
       </div>
     </div>
   );

@@ -14,6 +14,7 @@ module.exports = {
       btn_red: "#fecaca",
       btn_green: "#a7f3d0",
       tab_blue: "#243b55",
+      purple: "#d55cff",
       orange: {
         light: "#f45c43",
         light2: "#ff9966",
