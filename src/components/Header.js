@@ -2,7 +2,14 @@ import React from "react";
 import { User } from "react-feather";
 import { Link } from "react-router-dom";
 
-export const Header = ({ appName, link, title, username }) => {
+export const Header = ({
+  appName,
+  link,
+  title,
+  username,
+  eventLink,
+  eventName,
+}) => {
   const [dropdown, setDropdown] = React.useState(false);
   return (
     <div className="flex flex-row justify-between p-6 border-b">
@@ -29,9 +36,20 @@ export const Header = ({ appName, link, title, username }) => {
           tabindex="-1"
         >
           <div class="py-1" role="none">
+            {eventLink ? (
+              <a
+                href={eventLink}
+                className="text-gray-700 font-bold block px-4 py-2 text-sm"
+                role="menuitem"
+                tabindex="-1"
+                id="menu-item-1"
+              >
+                {eventName}
+              </a>
+            ) : null}
             <button
               type="submit"
-              class="text-gray-700 block w-full text-left px-4 py-2 text-sm"
+              className="text-gray-700 font-bold block w-full text-left px-4 py-2 text-sm"
               role="menuitem"
               tabindex="-1"
               id="menu-item-3"
