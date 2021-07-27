@@ -65,7 +65,7 @@ export default function Scanners() {
         <div className="px-4 py-4 rounded-r-lg bg-gray-light"></div>
         <div className="mt-1 ml-2">
           <a href="#">
-            <p className="font-bold text-black">Scanners List</p>
+            <p className="font-bold text-black">List</p>
           </a>
         </div>
       </div>
@@ -106,6 +106,7 @@ export default function Scanners() {
                 id="username"
                 type="text"
                 placeholder="Username"
+                required
               />
             </div>
             <div className="mb-4">
@@ -120,6 +121,7 @@ export default function Scanners() {
                 id="username"
                 type="text"
                 placeholder="Email"
+                required
               />
             </div>
             <div className="mb-4">
@@ -134,8 +136,10 @@ export default function Scanners() {
                 id="password"
                 type="password"
                 placeholder="******************"
+                required
               />
             </div>
+
             <button className="w-full bg-black outline-white uppercase text-white font-bold py-2 px-4 rounded-lg">
               Submit
             </button>

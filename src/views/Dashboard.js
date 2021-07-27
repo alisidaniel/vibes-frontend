@@ -10,7 +10,7 @@ export default function Home() {
 
   return (
     <div className="w-full h-screen w-screen">
-      <Header appName="vibes" username="Dani" title="Dashbord" />
+      <Header appName="vibes" username="Dani" title="Dashboard" />
 
       <div className="mt-4">
         <Link to="/dashboard/events">
