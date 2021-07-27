@@ -4,6 +4,7 @@ import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
 
 export default function Home() {
+  // const [camera, setCamera] = useState(false);
   useEffect(() => {
     const qrcode = window.qrcode;
     const video = document.createElement("video");
@@ -27,13 +28,17 @@ export default function Home() {
       }
     };
     btnStopCamera.onclick = () => {
-      scanning = false;
-      video.srcObject.getTracks().forEach((track) => {
-        track.stop();
-      });
-      qrResult.hidden = false;
-      canvasElement.hidden = true;
-      btnScanQR.hidden = false;
+      if (video.srcObject) {
+        scanning = false;
+        video.srcObject.getTracks().forEach((track) => {
+          track.stop();
+        });
+        qrResult.hidden = false;
+        canvasElement.hidden = true;
+        btnScanQR.hidden = false;
+      } else {
+        alert("Camera is off");
+      }
     };
     btnScanQR.onclick = () => {
       navigator.mediaDevices
@@ -84,7 +89,7 @@ export default function Home() {
         </div>
       </div>
       <div className="flex w-full md:px-60 lg:px-72 px-10 h-40 mb-4">
-        <div className="flex w-full px-0 lg:px-24 h-56 lg:40 border border-black">
+        <div className="flex w-full px-0 lg:px-24 h-56 lg:40 border-dashed border-4 border-purple shadow-lg bg-gray-dark">
           <canvas className="w-full" hidden="" id="qr-canvas"></canvas>
         </div>
       </div>
@@ -92,15 +97,15 @@ export default function Home() {
         <button
           type="button"
           id="btn-scan-qr"
-          className="flex flex-row bg-black p-3 text-white px-12 space-x-3"
+          className="flex flex-row bg-black p-3 text-white px-6 space-x-4"
         >
           <Camera size={30} color="white" />
-          <p className="font-bold">Scan</p>
+          <p className="font-bold">Start</p>
         </button>
         <button
           type="button"
           id="btn-stop-camera"
-          className="flex flex-row bg-black p-3 text-white px-12 space-x-3"
+          className="flex flex-row bg-black p-3 text-white px-6 space-x-4"
         >
           <CameraOff size={30} color="white" />
           <p className="font-bold">Stop</p>
