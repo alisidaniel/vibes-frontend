@@ -6,32 +6,25 @@ import { Header } from "../components/Header";
 export default function Home() {
   useEffect(() => {
     const qrcode = window.qrcode;
-
     const video = document.createElement("video");
     const canvasElement = document.getElementById("qr-canvas");
     const canvas = canvasElement.getContext("2d");
-
     const qrResult = document.getElementById("qr-result");
     const outputData = document.getElementById("outputData");
     const btnScanQR = document.getElementById("btn-scan-qr");
-
     let scanning = false;
-
     qrcode.callback = (res) => {
       if (res) {
         outputData.innerText = res;
         scanning = false;
-
         video.srcObject.getTracks().forEach((track) => {
           track.stop();
         });
-
         qrResult.hidden = false;
         canvasElement.hidden = true;
         btnScanQR.hidden = false;
       }
     };
-
     btnScanQR.onclick = () => {
       navigator.mediaDevices
         .getUserMedia({ video: { facingMode: "environment" } })
@@ -47,15 +40,12 @@ export default function Home() {
           scan();
         });
     };
-
     function tick() {
       canvasElement.height = video.videoHeight;
       canvasElement.width = video.videoWidth;
       canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
-
       scanning && requestAnimationFrame(tick);
     }
-
     function scan() {
       try {
         qrcode.decode();
@@ -74,7 +64,7 @@ export default function Home() {
         eventLink="/events"
         eventName="Event Lists"
       />
-      <div className="flex-col grid justify-center items-center py-20 px-10">
+      <div className="flex-col grid justify-center items-center py-10 px-10">
         <div className="flex justify-center">
           <p className="welcome">Welcome to Vibes</p>
         </div>
@@ -82,10 +72,12 @@ export default function Home() {
           <p className="">Click button to start scanning.</p>
         </div>
       </div>
-      <div className="border border-black">
-        <canvas hidden="" id="qr-canvas"></canvas>
+      <div className="flex w-full md:px-60 lg:px-72 px-10 h-40 mb-4">
+        <div className="flex w-full px-0 lg:px-24 h-56 lg:40 border border-black">
+          <canvas className="w-full" hidden="" id="qr-canvas"></canvas>
+        </div>
       </div>
-      <div className="flex justify-center">
+      <div className="flex justify-center pt-24">
         <button
           type="button"
           id="btn-scan-qr"
