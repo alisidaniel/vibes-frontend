@@ -88,6 +88,11 @@ export default function Home() {
           <p className="">Click button to start scanning.</p>
         </div>
       </div>
+      <div className="flex flex-row justify-center items-center">
+        <div id="qr-result" hidden="">
+          <b>Scan result:</b> <span id="outputData"></span>
+        </div>
+      </div>
       <div className="flex w-full md:px-60 lg:px-72 px-10 h-40 mb-4">
         <div className="flex w-full px-0 lg:px-24 h-56 lg:40 border-dashed border-4 border-purple shadow-lg bg-gray-dark">
           <canvas className="w-full" hidden="" id="qr-canvas"></canvas>
@@ -110,11 +115,6 @@ export default function Home() {
           <CameraOff size={30} color="white" />
           <p className="font-bold">Stop</p>
         </button>
-      </div>
-      <div className="flex flex-row justify-center items-center">
-        <div id="qr-result" hidden="">
-          <b>Scan result:</b> <span id="outputData"></span>
-        </div>
       </div>
       <div className="py-8">
         <div className="flex flex-row justify-center space-x-2">
