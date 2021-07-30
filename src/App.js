@@ -26,26 +26,36 @@ import Admins from "./views/Admins";
 
 //States
 import AuthState from "./context/Authentication/authState";
+import AuthContext from "./context/Authentication/authContext";
+
+const AuthRoute = (props) => {
+  const authContext = useContext(AuthContext);
+  if (!authContext?.isAuthenticated) return <Redirect to="/login" />;
+  return <Route {...props} />;
+};
 
 function App() {
   return (
     <Modal.Provider>
       <ThemeProvider theme={Theme}>
         <BrowserRouter>
-          <Switch>
-            <Route exact path="/" component={Login} />
-            <Route path="/login" component={Login} />
-            <Route path="/home" component={Home} />
-            <Route path="/events" component={Events} />
-            <Route path="/history" component={EventDetails} />
-            <Route path="/forgot/password" component={ForgotPassword} />
-            <Route exact path="/dashboard" component={Dashboard} />
-            <Route exact path="/dashboard/events" component={EventList} />
-            <Route path="/dashboard/scanners" component={Scanners} />
-            <Route path="/dashboard/events/tickets" component={Tickets} />
-            <Route path="/dashboard/admins" component={Admins} />
-            <Route path="*" component={NotFound} />
-          </Switch>
+          <AuthState>
+            <Switch>
+              <AuthRoute path="/home" component={Home} />
+              <Route exact path="/" component={Login} />
+              <Route path="/login" component={Login} />
+              {/* <Route path="/home" component={Home} /> */}
+              <Route path="/events" component={Events} />
+              <Route path="/history" component={EventDetails} />
+              <Route path="/forgot/password" component={ForgotPassword} />
+              <Route exact path="/dashboard" component={Dashboard} />
+              <Route exact path="/dashboard/events" component={EventList} />
+              <Route path="/dashboard/scanners" component={Scanners} />
+              <Route path="/dashboard/events/tickets" component={Tickets} />
+              <Route path="/dashboard/admins" component={Admins} />
+              <Route path="*" component={NotFound} />
+            </Switch>
+          </AuthState>
         </BrowserRouter>
       </ThemeProvider>
     </Modal.Provider>

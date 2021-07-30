@@ -3,9 +3,52 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Camera } from "react-feather";
 
+//
+import AuthContext from "../context/Authentication/authContext";
+
 export default function Login() {
-  const { register, handleSubmit } = useForm();
-  // const [loading, setLoading] = useState(true);
+  const authContext = useContext(AuthContext);
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {}, []);
+
+  const doLogin = async (formData) => {
+    if (formData.username === "" || formData.password === "") {
+      // alert("Enter email and password.");
+      // toast("Enter email and password.");
+      setLoading(false);
+    } else {
+      const btnLoader = document.querySelector("#submit");
+      btnLoader.setAttribute("disabled", "");
+      btnLoader.innerHTML = "Loading... ";
+      authContext
+        ?.userLogin(formData.username, formData.password)
+        .then(function (res) {
+          console.log(res);
+          setLoading(false);
+          if (res.message === "Request failed with status code 400") {
+            // toast.error("Invalid email or password.");
+            btnLoader.removeAttribute("disabled", "");
+            btnLoader.innerHTML = "Login";
+          }
+        })
+        .catch(function (err) {
+          console.log(err);
+          setLoading(false);
+          // toast.error("Error: Please spin up server.");
+          btnLoader.removeAttribute("disabled", "");
+          btnLoader.innerHTML = "Login";
+        });
+    }
+  };
 
   return (
     <div class="w-full h-screen w-screen body">
@@ -21,7 +64,7 @@ export default function Login() {
       </div>
 
       <div className="flex justify-center py-20 px-10">
-        <form className="w-96" action="/dashboard">
+        <form className="w-96" onSubmit={handleSubmit(doLogin)}>
           <hgroup className="mb-2 text-center">
             <p className="h4 uppercase">login</p>
             {/* <P>
@@ -40,10 +83,14 @@ export default function Login() {
             <input
               className="shadow appearance-none border-none rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
               id="username"
-              type="text"
+              {...register("username", { required: true })}
               placeholder="Username"
             />
           </div>
+          {/* errors will return when field validation fails  */}
+          {errors.username && (
+            <span className="text-danger">Password is required</span>
+          )}
           <div className="mb-4">
             <label
               className="block text-white text-sm font-bold mb-2"
@@ -55,10 +102,17 @@ export default function Login() {
               className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
               id="password"
               type="password"
+              {...register("password", { required: true })}
               placeholder="******************"
             />
           </div>
-          <button className="w-full bg-black outline-white uppercase text-white font-bold py-2 px-4 rounded">
+          {errors.password && (
+            <span className="text-danger">Password is required</span>
+          )}
+          <button
+            id="submit"
+            className="w-full bg-black outline-white uppercase text-white font-bold py-2 px-4 rounded"
+          >
             Sign IN
           </button>
         </form>

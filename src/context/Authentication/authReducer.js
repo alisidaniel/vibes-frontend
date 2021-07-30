@@ -1,10 +1,14 @@
 import {
-  REGISTER_SUCCESS,
   USER_LOADED,
+  LOGIN_SUCCESS,
   LOGIN_FAIL,
+  LOGOUT,
+  REGISTER_SUCCESS,
   REGISTER_FAIL,
   AUTH_ERROR,
-  LOGOUT,
+  CLEAR_ERRORS,
+  GET_USER,
+  USER_ERROR,
 } from "../types";
 
 export default (state, action) => {
@@ -23,13 +27,13 @@ export default (state, action) => {
         loading: false,
       };
     case LOGIN_SUCCESS:
-      localStorage.setItem("token", action.payload.token);
-      // console.log('tokenJDKSHHSJDHJDHDJH', action.payload);
+      localStorage.setItem("token", action.payload.data.token);
+      // console.log("token--->", action.payload.data.token);
       return {
         ...state,
         ...action.payload,
         isAuthenticated: true,
-        user: action.payload,
+        user: action.payload.data.user,
         loading: false,
       };
 
@@ -37,7 +41,7 @@ export default (state, action) => {
       return {
         ...state,
         ...action.payload,
-        // loading: false,
+        loading: false,
       };
 
     case REGISTER_FAIL:
@@ -58,14 +62,14 @@ export default (state, action) => {
     case GET_USER:
       return {
         ...state,
-        // loading:false,
+        loading: false,
         userData: action.payload,
         error: null,
       };
     case USER_ERROR:
       return {
         ...state,
-        // loading:false,
+        loading: false,
         userData: null,
         error: action.payload,
       };

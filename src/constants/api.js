@@ -3,13 +3,20 @@ import axios from "axios";
 const token = localStorage.getItem("token");
 
 export const api = axios.create({
-  baseURL: "http://localhost:7000/api/v1",
-
+  baseURL: "https://vibescanner.cloudns.cl",
   headers: {
     "Content-Type": "application/json",
-    Authorization: token ? token : null,
+    Authorization: `Bearer ${token ? token : null}`,
+    withCredentials: true,
   },
 });
 
 //auth token verify
-export const TOKEN_VERIFY = "/auth/verifyuser";
+export const TOKEN_VERIFY = "/api/auth/verifyuser";
+export const CSRF_COOKIE = "/sanctum/csrf-cookie";
+
+// USER
+export const FETCH_USER = "/api/profile";
+export const LOGIN = "/api/login";
+export const RESET_PASSWORD = "/api/password/reset";
+export const FORGOT_PASSWORD = "/api/forgot/password";
