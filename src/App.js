@@ -24,6 +24,9 @@ import Scanners from "./views/Scanners";
 import Tickets from "./views/Tickets";
 import Admins from "./views/Admins";
 
+//States
+import AuthState from "./context/Authentication/authState";
+
 function App() {
   return (
     <Modal.Provider>
