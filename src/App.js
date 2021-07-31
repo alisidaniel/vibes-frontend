@@ -25,8 +25,10 @@ import Tickets from "./views/Tickets";
 import Admins from "./views/Admins";
 
 //States
-import AuthState from "./context/Authentication/authState";
 import AuthContext from "./context/Authentication/authContext";
+import AuthState from "./context/Authentication/authState";
+import UserState from "./context/User/userState";
+import AdminState from "./context/Admin/adminState";
 
 const AuthRoute = (props) => {
   const authContext = useContext(AuthContext);
@@ -41,26 +43,37 @@ function App() {
       <ThemeProvider theme={Theme}>
         <BrowserRouter>
           <AuthState>
-            <Switch>
-              <Route path="/login" component={Login} />
-              <Route path="/forgot/password" component={ForgotPassword} />
-              <AuthRoute exact path="/home" component={Home} />
-              <AuthRoute path="/events" component={Events} />
-              <AuthRoute path="/history" component={EventDetails} />
-              <ProtectedRoute exact path="/dashboard" component={Dashboard} />
-              <ProtectedRoute
-                exact
-                path="/dashboard/events"
-                component={EventList}
-              />
-              <ProtectedRoute path="/dashboard/scanners" component={Scanners} />
-              <ProtectedRoute
-                path="/dashboard/events/tickets"
-                component={Tickets}
-              />
-              <ProtectedRoute path="/dashboard/admins" component={Admins} />
-              <Route path="*" component={NotFound} />
-            </Switch>
+            <UserState>
+              <AdminState>
+                <Switch>
+                  <Route path="/login" component={Login} />
+                  <Route path="/forgot/password" component={ForgotPassword} />
+                  <AuthRoute exact path="/home" component={Home} />
+                  <AuthRoute path="/events" component={Events} />
+                  <AuthRoute path="/history" component={EventDetails} />
+                  <ProtectedRoute
+                    exact
+                    path="/dashboard"
+                    component={Dashboard}
+                  />
+                  <ProtectedRoute
+                    exact
+                    path="/dashboard/events"
+                    component={EventList}
+                  />
+                  <ProtectedRoute
+                    path="/dashboard/scanners"
+                    component={Scanners}
+                  />
+                  <ProtectedRoute
+                    path="/dashboard/events/tickets"
+                    component={Tickets}
+                  />
+                  <ProtectedRoute path="/dashboard/admins" component={Admins} />
+                  <Route path="*" component={NotFound} />
+                </Switch>
+              </AdminState>
+            </UserState>
           </AuthState>
         </BrowserRouter>
       </ThemeProvider>

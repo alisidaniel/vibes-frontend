@@ -14,7 +14,7 @@ import {
 import * as Constants from "../../constants/api";
 import { api } from "../../constants/api";
 import authReducer from "./authReducer";
-import { Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import setToken from "../../utils/setToken";
 import PageLoader from "../../views/Loader";
 
