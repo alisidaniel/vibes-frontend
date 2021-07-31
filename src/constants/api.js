@@ -15,8 +15,19 @@ export const api = axios.create({
 export const TOKEN_VERIFY = "/api/auth/user/verify";
 export const CSRF_COOKIE = "/sanctum/csrf-cookie";
 
-// USER
-export const FETCH_USER = "/api/profile";
+// AUTHENTICATION
 export const LOGIN = "/api/login";
 export const RESET_PASSWORD = "/api/password/reset";
 export const FORGOT_PASSWORD = "/api/forgot/password";
+
+// USER
+export const FETCH_USER = "/api/profile";
+export const VERIFY_QR_CODES = "/api/ticket/scanner/verify";
+export const GET_USER_EVENTS = "/api/user/event";
+
+// ADMIN
+export const ADD_USER = "api/add/user";
+export const DELETE_USER = "/api/remove/user";
+export const GET_SCANNER_USERS = "/api/scanner/user";
+export const GET_EVENTS = "/api/events";
+export const DISABLE_ENABLE_SCANNER_USER = "/api/disable/enable/scanner";

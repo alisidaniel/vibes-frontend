@@ -4,9 +4,21 @@ export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
 export const REGISTER_FAIL = "REGISTER_FAIL";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAIL = "LOGIN_FAIL";
+export const PASSWORD_FORGOT = "PASSWORD_FORGOT";
+export const PASSWORD_RESET = "PASSWORD_RESET";
 export const AUTH_ERROR = "AUTH_ERROR";
 export const LOGOUT = "LOGOUT";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
 
+// USERS TYPES
 export const USER_ERROR = "USER_ERROR";
 export const GET_USER = "GET_USER";
+export const GET_USER_EVENTS = "GET_USER_EVENTS";
+export const VERIFY_QR_CODES = "VERIFY_QR_CODES";
+
+// ADMIN  TYPES
+export const ADD_USER = "ADD_USER";
+export const DELETE_USER = "DELETE_USER";
+export const DISABLE_ENABLE_SCANNER_USER = "DISABLE_ENABLE_SCANNER_USER";
+export const GET_EVENTS = "GET_EVENTS";
+export const GET_SCANNER_USERS = "GET_SCANNER_USERS";
