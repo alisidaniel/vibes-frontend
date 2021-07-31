@@ -29,7 +29,9 @@ import AuthState from "./context/Authentication/authState";
 import AuthContext from "./context/Authentication/authContext";
 
 const AuthRoute = (props) => {
+  console.log("got here bro");
   const authContext = useContext(AuthContext);
+  console.log("checking me", authContext?.isAuthenticated);
   if (!authContext?.isAuthenticated) return <Redirect to="/login" />;
   return <Route {...props} />;
 };
@@ -62,13 +64,13 @@ function App() {
   );
 }
 
-const MainDashboard = () => {
-  return (
-    <div>
-      <p>Hello MainDashboard</p>
-    </div>
-  );
-};
+// const MainDashboard = () => {
+//   return (
+//     <div>
+//       <p>Hello MainDashboard</p>
+//     </div>
+//   );
+// };
 
 const NotFound = () => (
   <div>

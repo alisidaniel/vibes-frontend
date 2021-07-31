@@ -3,7 +3,7 @@ import { api } from "../constants/api";
 const setToken = async (token) => {
   try {
     if (token !== null) {
-      api.defaults.headers.common["authorization"] = token;
+      api.defaults.headers.common["authorization"] = `Bearer ${token}`;
     } else {
       delete api.defaults.headers.common["authorization"];
     }

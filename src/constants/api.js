@@ -12,7 +12,7 @@ export const api = axios.create({
 });
 
 //auth token verify
-export const TOKEN_VERIFY = "/api/auth/verifyuser";
+export const TOKEN_VERIFY = "/api/auth/user/verify";
 export const CSRF_COOKIE = "/sanctum/csrf-cookie";
 
 // USER

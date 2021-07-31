@@ -1,13 +1,15 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Camera } from "react-feather";
+import { useHistory } from "react-router-dom";
 
 //
 import AuthContext from "../context/Authentication/authContext";
 
 export default function Login() {
   const authContext = useContext(AuthContext);
+
+  const history = useHistory();
 
   const {
     register,
@@ -18,7 +20,11 @@ export default function Login() {
 
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (authContext?.isAuthenticated) {
+      history.push("/home");
+    }
+  }, []);
 
   const doLogin = async (formData) => {
     if (formData.username === "" || formData.password === "") {

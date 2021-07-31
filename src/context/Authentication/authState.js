@@ -16,13 +16,14 @@ import { api } from "../../constants/api";
 import authReducer from "./authReducer";
 import { Redirect, useHistory } from "react-router-dom";
 import setToken from "../../utils/setToken";
+import PageLoader from "../../views/Loader";
 
 const AuthState = (props) => {
   const history = useHistory();
 
   const initialState = {
     token: localStorage.getItem("token"),
-    isAuthenticated: null,
+    isAuthenticated: false,
     active: false,
     user: null,
     userData: null,
@@ -34,17 +35,18 @@ const AuthState = (props) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
 
   useEffect(() => {
-    // const isTokenValid = async () => {
-    //   try {
-    //     const response = await api.get(Constants.TOKEN_VERIFY);
-    //     // console.log("hello got into the verify", response);
-    //     dispatch({ type: USER_LOADED, payload: response.data });
-    //   } catch (e) {
-    //     console.log("Error logged:", e);
-    //     dispatch({ type: USER_ERROR, payload: e.response });
-    //   }
-    // };
-    // isTokenValid();
+    const isTokenValid = async () => {
+      try {
+        api.get(Constants.CSRF_COOKIE).then(async (res) => {
+          const response = await api.get(Constants.TOKEN_VERIFY);
+          dispatch({ type: USER_LOADED, payload: response.data });
+          console.log("account valid", response);
+        });
+      } catch (e) {
+        dispatch({ type: USER_ERROR, payload: e.response });
+      }
+    };
+    isTokenValid();
   }, []);
 
   // const userRegistration = async (name, email, phone, password) => {
@@ -74,8 +76,8 @@ const AuthState = (props) => {
           username,
           password,
         });
-        dispatch({ type: LOGIN_SUCCESS, payload: response.data });
-        setToken(response.data.token);
+        dispatch({ type: LOGIN_SUCCESS, payload: response.data.data });
+        setToken(response.data.data.token);
         // history.push("/dashboard");
         return response.data;
       });
@@ -139,8 +141,7 @@ const AuthState = (props) => {
         resetPassword,
       }}
     >
-      {props.children}
-      {/* {state.loading ? <PageLoader /> : props.children} */}
+      {state.loading ? <PageLoader /> : props.children}
     </AuthContext.Provider>
   );
 };
