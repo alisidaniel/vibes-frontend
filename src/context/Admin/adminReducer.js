@@ -4,6 +4,7 @@ import {
   DISABLE_ENABLE_SCANNER_USER,
   GET_EVENTS,
   GET_SCANNER_USERS,
+  ADMIN_ERROR,
 } from "../types";
 
 export default (state, action) => {
@@ -23,8 +24,13 @@ export default (state, action) => {
     case GET_EVENTS:
       return {
         ...state,
+        events: action.payload,
       };
     case GET_SCANNER_USERS:
+      return {
+        ...state,
+      };
+    case ADMIN_ERROR:
       return {
         ...state,
       };

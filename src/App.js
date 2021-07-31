@@ -1,14 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import "./App.css";
 import { ThemeProvider } from "styled-components";
-import {
-  BrowserRouter,
-  Route,
-  Switch,
-  Redirect,
-  useHistory,
-  Link,
-} from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { Modal } from "@wigxel/react-components/lib/cards";
 import Theme from "./styles/Theme";
 
