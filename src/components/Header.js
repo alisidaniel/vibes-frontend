@@ -1,6 +1,7 @@
 import React from "react";
 import { User } from "react-feather";
 import { Link } from "react-router-dom";
+import AuthContext from "../context/Authentication/authContext";
 
 export const Header = ({
   appName,
@@ -11,6 +12,7 @@ export const Header = ({
   eventName,
 }) => {
   const [dropdown, setDropdown] = React.useState(false);
+  const authContext = React.useContext(AuthContext);
   return (
     <div className="flex flex-row justify-between p-6 border-b">
       <div className="">
@@ -48,7 +50,7 @@ export const Header = ({
               </a>
             ) : null}
             <button
-              type="submit"
+              onClick={authContext.logout}
               className="text-gray-700 font-bold block w-full text-left px-4 py-2 text-sm"
               role="menuitem"
               tabindex="-1"

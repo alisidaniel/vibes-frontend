@@ -29,10 +29,9 @@ import AuthState from "./context/Authentication/authState";
 import AuthContext from "./context/Authentication/authContext";
 
 const AuthRoute = (props) => {
-  console.log("got here bro");
   const authContext = useContext(AuthContext);
-  console.log("checking me", authContext?.isAuthenticated);
   if (!authContext?.isAuthenticated) return <Redirect to="/login" />;
+  if (authContext.user.user.isAdmin === 1) return <Redirect to="/dashboard" />;
   return <Route {...props} />;
 };
 
@@ -43,18 +42,23 @@ function App() {
         <BrowserRouter>
           <AuthState>
             <Switch>
-              <AuthRoute path="/home" component={Home} />
-              <Route exact path="/" component={Login} />
               <Route path="/login" component={Login} />
-              {/* <Route path="/home" component={Home} /> */}
-              <Route path="/events" component={Events} />
-              <Route path="/history" component={EventDetails} />
               <Route path="/forgot/password" component={ForgotPassword} />
-              <Route exact path="/dashboard" component={Dashboard} />
-              <Route exact path="/dashboard/events" component={EventList} />
-              <Route path="/dashboard/scanners" component={Scanners} />
-              <Route path="/dashboard/events/tickets" component={Tickets} />
-              <Route path="/dashboard/admins" component={Admins} />
+              <AuthRoute exact path="/home" component={Home} />
+              <AuthRoute path="/events" component={Events} />
+              <AuthRoute path="/history" component={EventDetails} />
+              <ProtectedRoute exact path="/dashboard" component={Dashboard} />
+              <ProtectedRoute
+                exact
+                path="/dashboard/events"
+                component={EventList}
+              />
+              <ProtectedRoute path="/dashboard/scanners" component={Scanners} />
+              <ProtectedRoute
+                path="/dashboard/events/tickets"
+                component={Tickets}
+              />
+              <ProtectedRoute path="/dashboard/admins" component={Admins} />
               <Route path="*" component={NotFound} />
             </Switch>
           </AuthState>
@@ -64,17 +68,16 @@ function App() {
   );
 }
 
-// const MainDashboard = () => {
-//   return (
-//     <div>
-//       <p>Hello MainDashboard</p>
-//     </div>
-//   );
-// };
+const ProtectedRoute = (props) => {
+  const authContext = useContext(AuthContext);
+  if (!authContext?.isAuthenticated) return <Redirect to="/login" />;
+  if (authContext.user.user.isAdmin === 0) return <Redirect to="/login" />;
+  return <Route {...props} />;
+};
 
 const NotFound = () => (
   <div>
-    <span>
+    <span className="flex justify-center items-center">
       404 | <b>NOT FOUND</b>
     </span>
   </div>

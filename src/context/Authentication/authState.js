@@ -37,11 +37,9 @@ const AuthState = (props) => {
   useEffect(() => {
     const isTokenValid = async () => {
       try {
-        api.get(Constants.CSRF_COOKIE).then(async (res) => {
-          const response = await api.get(Constants.TOKEN_VERIFY);
-          dispatch({ type: USER_LOADED, payload: response.data });
-          console.log("account valid", response);
-        });
+        await api.get(Constants.CSRF_COOKIE);
+        const response = await api.get(Constants.TOKEN_VERIFY);
+        dispatch({ type: USER_LOADED, payload: response.data });
       } catch (e) {
         dispatch({ type: USER_ERROR, payload: e.response });
       }
@@ -70,34 +68,34 @@ const AuthState = (props) => {
 
   const userLogin = async (username, password) => {
     try {
-      api.get(Constants.CSRF_COOKIE).then(async (res) => {
-        console.log(res, password, username);
-        const response = await api.post(Constants.LOGIN, {
-          username,
-          password,
-        });
-        dispatch({ type: LOGIN_SUCCESS, payload: response.data.data });
-        setToken(response.data.data.token);
-        // history.push("/dashboard");
-        return response.data;
+      await api.get(Constants.CSRF_COOKIE);
+      const response = await api.post(Constants.LOGIN, {
+        username,
+        password,
       });
+      dispatch({ type: LOGIN_SUCCESS, payload: response.data.data });
+      setToken(response.data.data.token);
+      if (response.data.data.user.isAdmin === 1) {
+        history.push("/home");
+      } else {
+        history.push("/dashboard");
+      }
+      return response.data;
     } catch (e) {
       dispatch({
         type: LOGIN_FAIL,
         payload: e.response.data.message,
       });
-
       return e;
     }
   };
 
   const getUser = async (userId) => {
     try {
-      api.get(Constants.CSRF_COOKIE).then(async (res) => {
-        const response = await api.get(Constants.FETCH_USER, userId);
-        dispatch({ type: GET_USER, payload: response.data });
-        return response.data;
-      });
+      await api.get(Constants.CSRF_COOKIE);
+      const response = await api.get(Constants.FETCH_USER, userId);
+      dispatch({ type: GET_USER, payload: response.data });
+      return response.data;
     } catch (e) {
       dispatch({ type: USER_ERROR, payload: e.response.data.message });
     }
@@ -105,17 +103,17 @@ const AuthState = (props) => {
 
   const logout = () => {
     dispatch({ type: LOGOUT });
+    history.push("/login");
   };
 
   const resetPassword = async (email, password) => {
     try {
-      api.get(Constants.CSRF_COOKIE).then(async (res) => {
-        const response = await api.post(Constants.RESET_PASSWORD, {
-          email,
-          password,
-        });
-        dispatch({ type: LOGIN_SUCCESS, payload: response.data.message });
+      await api.get(Constants.CSRF_COOKIE);
+      const response = await api.post(Constants.RESET_PASSWORD, {
+        email,
+        password,
       });
+      dispatch({ type: LOGIN_SUCCESS, payload: response.data.message });
     } catch (err) {
       console.log(`reset error :${err.response.data.message}`);
       console.log(err);
