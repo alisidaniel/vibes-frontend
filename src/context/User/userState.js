@@ -46,6 +46,7 @@ const UserState = (props) => {
     <UserContext.Provider
       value={{
         loading: state.loading,
+        events: state.events,
         getEvents,
         verifyQR,
       }}

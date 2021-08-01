@@ -6,6 +6,9 @@
   /* background-color: rgb(44, 42, 42); */
   background: black url("/src/assets/pm.png") no-repeat fixed center;
 }
+#body {
+  background-color: #4d2459;
+}
 .head {
   background-color: black !important;
   position: relative;
@@ -162,4 +165,45 @@
 #qr-result {
   font-size: 1.2em;
   background-color: white;
+}
+
+#title {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  color: #ffffff;
+}
+
+#text1 {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 49px;
+  color: #ffffff;
+}
+
+#text2 {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 27px;
+  color: #b2b2b2;
+}
+
+#footer {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  color: #ffffff;
+}
+
+#login {
+  background: #ffffff;
+  opacity: 0.85;
 }

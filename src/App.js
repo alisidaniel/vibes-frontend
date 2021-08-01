@@ -16,6 +16,8 @@ import EventList from "./views/EventList";
 import Scanners from "./views/Scanners";
 import Tickets from "./views/Tickets";
 import Admins from "./views/Admins";
+import LandingPage from "./views/LandingPage";
+import Login2 from "./views/Login2";
 
 //States
 import AuthContext from "./context/Authentication/authContext";
@@ -39,7 +41,9 @@ function App() {
             <UserState>
               <AdminState>
                 <Switch>
+                  <Route exact path="/" component={LandingPage} />
                   <Route path="/login" component={Login} />
+                  <Route path="/login2" component={Login2} />
                   <Route path="/forgot/password" component={ForgotPassword} />
                   <AuthRoute exact path="/home" component={Home} />
                   <AuthRoute path="/events" component={Events} />
