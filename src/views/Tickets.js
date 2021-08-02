@@ -59,42 +59,28 @@ export default function Tickets() {
     },
   ];
   return (
-    <div className="w-full h-screen w-screen">
-      <Header
-        appName="vibes"
-        link="/dashboard"
-        username="Dani"
-        title="Dasboard"
-      />
-      <div className="flex flex-row mt-8">
-        <div className="px-4 py-4 rounded-r-lg bg-gray-light"></div>
-        <div className="mt-1 ml-2">
-          <a href="#">
-            <p className="font-bold">Scanned results</p>
-          </a>
-        </div>
-      </div>
-      <div className="flex flex-row justify-between sm:px-4 md:px-4 xs:px-4 lg:px-20 py-3">
+    <section className="px-4 py-4 container mx-auto max-w-screen-lg select-none">
+      <div className="flex flex-row justify-between items-between sm:px-4 md:px-2 xs:px-4 py-3">
         <RefreshButton
           onClick={() => window.location.reload(false)}
           loading={false}
         />
         <button
           onClick={() => history.goBack()}
-          className="flex flex-row text-black px-2 py-2 rounded-lg"
+          className="flex flex-row shadow px-8 text-purple-400 px-2 py-2 rounded-lg"
         >
           <ArrowLeft />
           <span> Back</span>
         </button>
       </div>
-      <div className="lg:p-20">
+      <div className="ml-10">
         <Table
           columns={["S/N", "Ticket", "Scanner Name", "Event", "Time"]}
           items={dumData}
           renderRow={renderPage}
         />
       </div>
-    </div>
+    </section>
   );
 }
 

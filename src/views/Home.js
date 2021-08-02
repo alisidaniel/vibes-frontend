@@ -125,9 +125,7 @@ export default function Home() {
           <span className="font-bold">200</span>
         </div>
       </div>
-      <div>
-        <Footer />
-      </div>
+      <div></div>
     </div>
   );
 }

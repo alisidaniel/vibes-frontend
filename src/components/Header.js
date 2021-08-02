@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import { User } from "react-feather";
-import { Link } from "react-router-dom";
 import AuthContext from "../context/Authentication/authContext";
 import vibesImage from "../assets/pm2.jpeg";
 export const Header = ({
@@ -11,8 +10,8 @@ export const Header = ({
   eventLink,
   eventName,
 }) => {
-  const [dropdown, setDropdown] = React.useState(false);
-  const authContext = React.useContext(AuthContext);
+  const [dropdown, setDropdown] = useState(false);
+  const authContext = useContext(AuthContext);
   return (
     <div className="w-full h-20" id="header">
       <div className="flex flex-row justify-between p-5">
@@ -28,7 +27,11 @@ export const Header = ({
         </div>
         <div className="flex flex-row justify-center items-center space-x-4">
           <span className="text-white">Hi, Dani</span>
-          <button onClick={() => setDropdown(!dropdown)}>
+          <button
+            onClick={() => {
+              setDropdown(!dropdown);
+            }}
+          >
             <div className="w-10 h-10 bg-gray-light rounded-full flex justify-center items-center">
               <User color="white" />
             </div>
@@ -55,7 +58,7 @@ export const Header = ({
                 {eventName}
               </a>
             ) : null}
-            <button
+            <a
               onClick={authContext.logout}
               className="text-gray-700 font-bold block w-full text-left px-4 py-2 text-sm"
               role="menuitem"
@@ -63,7 +66,7 @@ export const Header = ({
               id="menu-item-3"
             >
               Sign out
-            </button>
+            </a>
           </div>
         </div>
       ) : null}

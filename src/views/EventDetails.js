@@ -1,10 +1,13 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Table } from "../components/Table";
 import { StatusBadge, isStatus } from "../components/Badge";
-import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
+import { ArrowLeft } from "react-feather";
+import RefreshButton from "../components/Buttons/RefreshButton";
+import { useHistory } from "react-router-dom";
 
 export default function EventDetails() {
+  const history = useHistory();
   const dumData = [
     {
       index: 0,
@@ -62,23 +65,28 @@ export default function EventDetails() {
   return (
     <div className="w-full h-screen w-screen">
       <Header appName="vibes" link="/home" username="Dani" title="Home" />
-      <div className="flex flex-row mt-8">
-        <div className="px-4 py-4 rounded-r-lg bg-gray-light"></div>
-        <div className="mt-1 ml-2">
-          <a href="#">
-            <p className="subtitle">Scanned results</p>
-          </a>
+      <div className="p-12">
+        <div className="flex flex-row justify-between">
+          <RefreshButton
+            onClick={() => window.location.reload(false)}
+            loading={false}
+          />
+          <button
+            onClick={() => history.goBack()}
+            className="flex flex-row shadow px-8 text-purple-400 px-2 py-2 rounded-lg"
+          >
+            <ArrowLeft className="text-purple-400" color="purple" />
+            <span> Back</span>
+          </button>
+        </div>
+        <div className="ml-10">
+          <Table
+            columns={["S/N", "Ticket", "Scanner Name", "Event", "Status", ""]}
+            items={dumData}
+            renderRow={renderPage}
+          />
         </div>
       </div>
-
-      <div className="lg:p-20">
-        <Table
-          columns={["S/N", "Ticket", "Scanner Name", "Event", "Status", ""]}
-          items={dumData}
-          renderRow={renderPage}
-        />
-      </div>
-      <Footer />
     </div>
   );
 }

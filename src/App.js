@@ -1,7 +1,13 @@
 import React, { useContext, useState } from "react";
 import "./App.css";
 import { ThemeProvider } from "styled-components";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import {
+  BrowserRouter,
+  Route,
+  Switch,
+  Redirect,
+  useLocation,
+} from "react-router-dom";
 import { Modal } from "@wigxel/react-components/lib/cards";
 import Theme from "./styles/Theme";
 import SearchInput from "./components/SearchInput";
@@ -51,8 +57,8 @@ function App() {
                   <Route path="/dashboard" component={MainDashboard} />
                   <Route path="/forgot/password" component={ForgotPassword} />
                   <AuthRoute exact path="/home" component={Home} />
-                  <AuthRoute path="/events" component={Events} />
-                  <AuthRoute path="/history" component={EventDetails} />
+                  <AuthRoute exact path="/events" component={Events} />
+                  <AuthRoute path="/events/history" component={EventDetails} />
                   <Route path="*" component={NotFound} />
                 </Switch>
               </AdminState>
@@ -65,6 +71,7 @@ function App() {
 }
 
 const MainDashboard = () => {
+  const location = useLocation();
   const links = [
     {
       id: 1,
@@ -91,7 +98,7 @@ const MainDashboard = () => {
       href: "/dashboard/scanners",
     },
   ];
-  const [selected, setSelected] = useState({ id: 1 });
+  const [selected, setSelected] = useState({ href: "/dashboard" });
   const onSelect = (i) => {
     setSelected(i);
   };
@@ -106,7 +113,7 @@ const MainDashboard = () => {
                 {links.map((item) => (
                   <li
                     className="flex flex-row justify-start items-center pl-6 space-x-2 py-4"
-                    id={selected.id === item.id ? "active" : ""}
+                    id={location.pathname == item.href ? "active" : ""}
                   >
                     {item.icon}
                     <a

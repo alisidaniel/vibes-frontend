@@ -102,8 +102,9 @@ const AuthState = (props) => {
   };
 
   const logout = () => {
+    console.log("hello bro");
     dispatch({ type: LOGOUT });
-    history.push("/login");
+    // history.push("/login");
   };
 
   const resetPassword = async (email, password) => {
