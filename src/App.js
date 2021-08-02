@@ -1,9 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./App.css";
 import { ThemeProvider } from "styled-components";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { Modal } from "@wigxel/react-components/lib/cards";
 import Theme from "./styles/Theme";
+import SearchInput from "./components/SearchInput";
+import { LogOut, Grid, Users, Calendar, Chrome } from "react-feather";
 
 //Views
 import Login from "./views/Login";
@@ -17,6 +19,7 @@ import Scanners from "./views/Scanners";
 import Tickets from "./views/Tickets";
 import Admins from "./views/Admins";
 import LandingPage from "./views/LandingPage";
+
 import Login2 from "./views/Login2";
 
 //States
@@ -24,6 +27,7 @@ import AuthContext from "./context/Authentication/authContext";
 import AuthState from "./context/Authentication/authState";
 import UserState from "./context/User/userState";
 import AdminState from "./context/Admin/adminState";
+import { Header } from "./components/Header";
 
 const AuthRoute = (props) => {
   const authContext = useContext(AuthContext);
@@ -44,29 +48,11 @@ function App() {
                   <Route exact path="/" component={LandingPage} />
                   <Route path="/login" component={Login} />
                   <Route path="/login2" component={Login2} />
+                  <Route path="/dashboard" component={MainDashboard} />
                   <Route path="/forgot/password" component={ForgotPassword} />
                   <AuthRoute exact path="/home" component={Home} />
                   <AuthRoute path="/events" component={Events} />
                   <AuthRoute path="/history" component={EventDetails} />
-                  <ProtectedRoute
-                    exact
-                    path="/dashboard"
-                    component={Dashboard}
-                  />
-                  <ProtectedRoute
-                    exact
-                    path="/dashboard/events"
-                    component={EventList}
-                  />
-                  <ProtectedRoute
-                    path="/dashboard/scanners"
-                    component={Scanners}
-                  />
-                  <ProtectedRoute
-                    path="/dashboard/events/tickets"
-                    component={Tickets}
-                  />
-                  <ProtectedRoute path="/dashboard/admins" component={Admins} />
                   <Route path="*" component={NotFound} />
                 </Switch>
               </AdminState>
@@ -77,6 +63,142 @@ function App() {
     </Modal.Provider>
   );
 }
+
+const MainDashboard = () => {
+  const links = [
+    {
+      id: 1,
+      label: "Dashboard",
+      icon: <Grid color="black" />,
+      href: "/dashboard",
+    },
+    {
+      id: 2,
+      label: "Admins",
+      icon: <Users color="black" />,
+      href: "/dashboard/admins",
+    },
+    {
+      id: 3,
+      label: "Events",
+      icon: <Calendar color="black" />,
+      href: "/dashboard/events",
+    },
+    {
+      id: 4,
+      label: "Scanners",
+      icon: <Chrome color="black" />,
+      href: "/dashboard/scanners",
+    },
+  ];
+  const [selected, setSelected] = useState({ id: 1 });
+  const onSelect = (i) => {
+    setSelected(i);
+  };
+  return (
+    <div>
+      <Header appName="vibes" username="Dani" title="Dashboard" />
+      <div className="flex min-h-screen font-body text-_11" id="dashboard">
+        <aside className="select-none max-w-xs w-60 h-screen overflow-y-scroll overflow-hidden bg-gradient sticky top-0 bg-_1 text-white flex flex-col justify-between">
+          <div className="">
+            <div className="block w-full">
+              <ul className="">
+                {links.map((item) => (
+                  <li
+                    className="flex flex-row justify-start items-center pl-6 space-x-2 py-4"
+                    id={selected.id === item.id ? "active" : ""}
+                  >
+                    {item.icon}
+                    <a
+                      onClick={() => onSelect(item)}
+                      className="px-2 text-black"
+                      href={item.href}
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+                {/* <li
+                    className="flex flex-row justify-start items-center pl-6 space-x-2 py-4"
+                    id="active"
+                  >
+                    <Grid color="black" />
+                    <a className="px-2 text-black" href="#">
+                      Dashboard
+                    </a>
+                  </li> */}
+                {/* <li className="flex flex-row justify-start items-center pl-6 space-x-2 py-4">
+                  <Users color="black" />
+                  <a className="px-2 text-black" href="#">
+                    Admins
+                  </a>
+                </li>
+                <li className="flex flex-row justify-start items-center pl-6 space-x-2 py-4">
+                  <Calendar color="black" />
+                  <a className="px-2 text-black" href="#">
+                    Events
+                  </a>
+                </li>
+                <li className="flex flex-row justify-start items-center pl-6 space-x-2 py-4">
+                  <Chrome color="black" />
+                  <a className="px-2 text-black" href="#">
+                    Scanners
+                  </a>
+                </li> */}
+                <li className="flex flex-row justify-start items-center pl-6 space-x-2 py-4">
+                  <LogOut color="black" />
+                  <a className="px-2 text-black" href="#">
+                    Logout
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="flex items-center pb-4 mt-6">
+            <img
+              src=""
+              alt="Vibes logo"
+              className="rounded-lg mr-4 w-12 h-12 bg-white border inline-flex items-center justify-center"
+            />
+            <div className="flex-1 flex flex-col justify-start">
+              <p className="font-bold text-black">Daniel</p>
+              <p className="tracking-widest text-xs text-black">Staff</p>
+            </div>
+          </div>
+        </aside>
+        <main className="flex-1 relative">
+          <div className="flex text-blue-300 sticky bg-offwhite top-0 shadow justify-between z-40">
+            {/* <SearchInput
+            value={""}
+            className="text-xs"
+            onChange={() => {}}
+            placeholder="Search..."
+          /> */}
+            {/* <ToastContainer /> */}
+          </div>
+          <section className="relative z-10 py-10 px-4">
+            <Switch>
+              <ProtectedRoute exact path="/dashboard" component={Dashboard} />
+              <ProtectedRoute
+                exact
+                path="/dashboard/events"
+                component={EventList}
+              />
+              <ProtectedRoute path="/dashboard/scanners" component={Scanners} />
+              <ProtectedRoute
+                path="/dashboard/events/tickets"
+                component={Tickets}
+              />
+              <ProtectedRoute path="/dashboard/admins" component={Admins} />
+              <Route path="*" component={NotFound} />
+            </Switch>
+          </section>
+        </main>
+      </div>
+    </div>
+  );
+};
 
 const ProtectedRoute = (props) => {
   const authContext = useContext(AuthContext);

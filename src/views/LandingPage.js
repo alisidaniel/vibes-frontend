@@ -25,9 +25,14 @@ export default function LandingPage() {
             <p id="text1">Scan and Verify Qr code</p>
             <p id="text1">in seconds!</p>
           </div>
-          <p id="text2">Dummy text dummy text dummy text dummy text</p>
-          <p id="text2">Dummy text dummy text dummy text dummy text</p>
-          <p id="text2">Dummy text dummy text dummy text dummy text</p>
+          <p id="text2">
+            This scanner only works with QR codes generated from Vibes tickets
+          </p>
+          <p id="text2">
+            {" "}
+            Attempts to use otherwise is prosecutable under the law
+          </p>
+          <p id="text2">All rights are reserved to vibes SA.</p>
           <div className="pt-10">
             <button className="bg-black text-white px-12 py-2 rounded-lg">
               Get Started

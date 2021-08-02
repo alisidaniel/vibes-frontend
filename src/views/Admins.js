@@ -54,33 +54,28 @@ export default function Scanners() {
     },
   ];
   return (
-    <div className="w-full h-screen w-screen">
-      <Header
-        appName="vibes"
-        link="/dashboard"
-        username="Dani"
-        title="Dashboard"
-      />
-      <div className="flex flex-row mt-8">
-        <div className="px-4 py-4 rounded-r-lg bg-gray-light"></div>
-        <div className="mt-1 ml-2">
-          <a href="#">
-            <p className="font-bold text-black">List</p>
-          </a>
+    <section className="px-4 py-4 container mx-auto max-w-screen-lg select-none">
+      <div className="flex flex justify-between items-between mb-2">
+        <div className="flex flex-row">
+          <div className="px-4 py-4 rounded-r-lg bg-gray-light"></div>
+          <div className="mt-1 ml-2">
+            <a href="#">
+              <p className="font-bold text-black">List</p>
+            </a>
+          </div>
+        </div>
+
+        <div className="flex flex-row justify-end items-end">
+          <button
+            onClick={() => toggle("create-scanner")}
+            className="flex flex-row bg-green-400 text-white px-2 py-2 rounded-lg"
+          >
+            <Plus />
+            <span> Create New</span>
+          </button>
         </div>
       </div>
-
-      <div className="flex flex-row justify-end items-end mr-20">
-        <button
-          onClick={() => toggle("create-scanner")}
-          className="flex flex-row bg-green text-white px-2 py-2 rounded-lg"
-        >
-          <Plus />
-          <span> Create New</span>
-        </button>
-      </div>
-
-      <div className="lg:p-20">
+      <div className="ml-10">
         <Table
           columns={["S/N", "Username", "Email", "Date Created", ""]}
           items={dumData}
@@ -146,8 +141,7 @@ export default function Scanners() {
           </form>
         </Card>
       </Modal>
-      <Footer />
-    </div>
+    </section>
   );
 }
 

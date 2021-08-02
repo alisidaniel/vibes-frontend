@@ -71,9 +71,6 @@ export default function Events() {
           </div>
         </a>
       </div>
-      <div className="">
-        <Footer />
-      </div>
     </div>
   );
 }

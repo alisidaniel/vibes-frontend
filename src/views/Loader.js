@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // @ts-ignore
 import Lottie from "react-lottie";
-import animationData from "../assets/lottie/9379-loader.json";
+import animationData from "../assets/lottie/lf30_editor_zj1vtbdf.json";
 
 const PageLoader = () => {
   const defaultOptions = {

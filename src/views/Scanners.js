@@ -3,8 +3,8 @@ import { Plus } from "react-feather";
 import { Modal, Card } from "@wigxel/react-components/lib/cards";
 import { Table } from "../components/Table";
 import { isStatus } from "../components/Badge";
-import { Footer } from "../components/Footer";
-import { Header } from "../components/Header";
+// import { Footer } from "../components/Footer";
+// import { Header } from "../components/Header";
 import { HeadingGroup } from "../components/Typography/Heading";
 
 export default function Scanners() {
@@ -67,115 +67,111 @@ export default function Scanners() {
     },
   ];
   return (
-    <div className="w-full h-screen w-screen">
-      <Header
-        appName="vibes"
-        link="/dashboard"
-        username="Dani"
-        title="Dashboard"
-      />
-      <div className="flex flex-row mt-8">
-        <div className="px-4 py-4 rounded-r-lg bg-gray-light"></div>
-        <div className="mt-1 ml-2">
-          <a href="#">
-            <p className="font-bold text-black">Scan List</p>
-          </a>
-        </div>
-      </div>
+    <section className="px-4 py-4 container mx-auto max-w-screen-lg select-none">
+      <div>
+        <div className="flex flex-row justify-between itmes-between mb-2">
+          <div className="flex flex-row">
+            <div className="px-4 py-4 rounded-r-lg bg-gray-light"></div>
+            <div className="mt-1 ml-2">
+              <a href="#">
+                <p className="font-bold text-black">Scan List</p>
+              </a>
+            </div>
+          </div>
 
-      <div className="flex flex-row justify-end items-end mr-20">
-        <button
-          onClick={() => toggle("create-scanner")}
-          className="flex flex-row bg-green text-white px-2 py-2 rounded-lg"
-        >
-          <Plus />
-          <span> Create New</span>
-        </button>
-      </div>
-
-      <div className="lg:p-20">
-        <Table
-          columns={["S/N", "Ticket", "Scanner Name", "Event", "Status", ""]}
-          items={dumData}
-          renderRow={renderPage}
-        />
-      </div>
-      <Modal name="create-scanner" size="sm">
-        <Card style={{ backgroundColor: "white" }}>
-          <HeadingGroup
-            heading="Create Scanner"
-            subHeading="Create new scanner for vibe events."
-          />
-          <form>
-            <div className="mb-4">
-              <label
-                className="block text-white text-sm font-bold mb-2"
-                for="username"
-              >
-                Username
-              </label>
-              <input
-                className="shadow appearance-none border-none rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
-                id="username"
-                type="text"
-                placeholder="Username"
-                required
-              />
-            </div>
-            <div className="mb-4">
-              <label
-                className="block text-white text-sm font-bold mb-2"
-                for="username"
-              >
-                Email
-              </label>
-              <input
-                className="shadow appearance-none border-none rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
-                id="username"
-                type="text"
-                placeholder="Email"
-                required
-              />
-            </div>
-            <div className="mb-4">
-              <label
-                className="block text-white text-sm font-bold mb-2"
-                for="password"
-              >
-                Assigin event
-              </label>
-              <select
-                className="shadow appearance-none border-none py-2 px-3 rounded w-full text-black leading-tight focus:outline-none focus:shadow-outlin"
-                required
-              >
-                <option>Choose event</option>
-                <option>Option 1</option>
-                <option>Option 2</option>
-              </select>
-            </div>
-            <div className="mb-4">
-              <label
-                className="block text-white text-sm font-bold mb-2"
-                for="password"
-              >
-                Password
-              </label>
-              <input
-                className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                id="password"
-                type="password"
-                placeholder="******************"
-                required
-              />
-            </div>
-            <button className="w-full bg-black outline-white uppercase text-white font-bold py-2 px-4 rounded-lg">
-              Submit
+          <div className="flex flex-row justify-end items-end">
+            <button
+              onClick={() => toggle("create-scanner")}
+              className="flex flex-row bg-green-400 text-white px-2 py-2 rounded-lg"
+            >
+              <Plus />
+              <span> Create New</span>
             </button>
-          </form>
-        </Card>
-      </Modal>
-      <Footer />
-    </div>
+          </div>
+        </div>
+        <div className="ml-10">
+          <Table
+            columns={["S/N", "Ticket", "Scanner Name", "Event", "Status", ""]}
+            items={dumData}
+            renderRow={renderPage}
+          />
+        </div>
+        <Modal name="create-scanner" size="sm">
+          <Card style={{ backgroundColor: "white" }}>
+            <HeadingGroup
+              heading="Create Scanner"
+              subHeading="Create new scanner for vibe events."
+            />
+            <form>
+              <div className="mb-4">
+                <label
+                  className="block text-white text-sm font-bold mb-2"
+                  for="username"
+                >
+                  Username
+                </label>
+                <input
+                  className="shadow appearance-none border-none rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+                  id="username"
+                  type="text"
+                  placeholder="Username"
+                  required
+                />
+              </div>
+              <div className="mb-4">
+                <label
+                  className="block text-white text-sm font-bold mb-2"
+                  for="username"
+                >
+                  Email
+                </label>
+                <input
+                  className="shadow appearance-none border-none rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+                  id="username"
+                  type="text"
+                  placeholder="Email"
+                  required
+                />
+              </div>
+              <div className="mb-4">
+                <label
+                  className="block text-white text-sm font-bold mb-2"
+                  for="password"
+                >
+                  Assigin event
+                </label>
+                <select
+                  className="shadow appearance-none border-none py-2 px-3 rounded w-full text-black leading-tight focus:outline-none focus:shadow-outlin"
+                  required
+                >
+                  <option>Choose event</option>
+                  <option>Option 1</option>
+                  <option>Option 2</option>
+                </select>
+              </div>
+              <div className="mb-4">
+                <label
+                  className="block text-white text-sm font-bold mb-2"
+                  for="password"
+                >
+                  Password
+                </label>
+                <input
+                  className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                  id="password"
+                  type="password"
+                  placeholder="******************"
+                  required
+                />
+              </div>
+              <button className="w-full bg-black outline-white uppercase text-white font-bold py-2 px-4 rounded-lg">
+                Submit
+              </button>
+            </form>
+          </Card>
+        </Modal>
+      </div>
+    </section>
   );
 }
 
