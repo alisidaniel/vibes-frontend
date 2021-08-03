@@ -1,48 +1,50 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { Camera } from "react-feather";
-
-export default function Login() {
-  const { register, handleSubmit } = useForm();
-  // const [loading, setLoading] = useState(true);
-
+import vibesImage from "../assets/pm2.jpeg";
+export default function PasswordRecover() {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
   return (
-    <div class="w-full h-screen w-screen body">
-      <div className="border-b border-white head">
-        <div className="bg-header1 headerIcon"></div>
-        <div className="flex justify-center items-center py-6">
-          <p className="uppercase h1">vibes</p>
-          <Camera size={30} color="white" />
-        </div>
-      </div>
-      <div className="flex justify-end -mt-10 head2">
-        <div className="headerIcon2 -mr-2"></div>
-      </div>
-
-      <div className="flex justify-center py-20 px-10">
-        <form className="w-96" action="/dashboard">
-          <hgroup className="mb-2 text-center">
-            <p className="h4">Password reset</p>
-          </hgroup>
-          <div className="mb-4">
-            <label
-              className="block text-white text-sm font-bold mb-2"
-              for="username"
-            >
-              Email
-            </label>
-            <input
-              className="shadow appearance-none border-none rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline"
-              id="email"
-              type="text"
-              placeholder="Email"
-            />
+    <div
+      className="w-full h-screen py-24 justify-center items-center"
+      id="body"
+    >
+      <div className="flex justify-center items-center">
+        <div className="w-6/12 p-10 rounded-lg" id="login">
+          <div className="flex flex-row justify-center items-center space-x-2">
+            <img className="rounded-lg w-11 h-11" src={vibesImage} alt="logo" />
+            <span>Vibes Scanner</span>
           </div>
-          <button className="w-full bg-black outline-white uppercase text-white font-bold py-2 px-4 rounded">
-            Submit
-          </button>
-        </form>
+          <div className="py-4 text-center">
+            <span id="h6">Forgot Password</span>
+          </div>
+          <form>
+            <div className="mb-3">
+              <label className="block mb-2" for="username" id="label">
+                email
+              </label>
+              <input
+                type="email"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+                placeholder="Email"
+                {...register("email", { required: true })}
+              />
+            </div>
+
+            <div className="mb-3 py-5">
+              <button className="block w-full py-2 rounded-lg bg-black text-white">
+                Submit
+              </button>
+            </div>
+          </form>
+          <div className="flex flex-row justify-center mt-2">
+            <span>© Vibes SA Inc</span>
+          </div>
+        </div>
       </div>
     </div>
   );

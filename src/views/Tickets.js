@@ -4,7 +4,6 @@ import { useHistory } from "react-router-dom";
 import { Table } from "../components/Table";
 import RefreshButton from "../components/Buttons/RefreshButton";
 import { StatusBadge, isStatus } from "../components/Badge";
-import { Header } from "../components/Header";
 
 export default function Tickets() {
   const history = useHistory();

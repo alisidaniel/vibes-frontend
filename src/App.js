@@ -26,8 +26,6 @@ import Tickets from "./views/Tickets";
 import Admins from "./views/Admins";
 import LandingPage from "./views/LandingPage";
 
-import Login2 from "./views/Login2";
-
 //States
 import AuthContext from "./context/Authentication/authContext";
 import AuthState from "./context/Authentication/authState";
@@ -53,7 +51,6 @@ function App() {
                 <Switch>
                   <Route exact path="/" component={LandingPage} />
                   <Route path="/login" component={Login} />
-                  <Route path="/login2" component={Login2} />
                   <Route path="/dashboard" component={MainDashboard} />
                   <Route path="/forgot/password" component={ForgotPassword} />
                   <AuthRoute exact path="/home" component={Home} />
@@ -72,6 +69,7 @@ function App() {
 
 const MainDashboard = () => {
   const location = useLocation();
+  const authContext = useContext(AuthContext);
   const links = [
     {
       id: 1,
@@ -125,36 +123,9 @@ const MainDashboard = () => {
                     </a>
                   </li>
                 ))}
-                {/* <li
-                    className="flex flex-row justify-start items-center pl-6 space-x-2 py-4"
-                    id="active"
-                  >
-                    <Grid color="black" />
-                    <a className="px-2 text-black" href="#">
-                      Dashboard
-                    </a>
-                  </li> */}
-                {/* <li className="flex flex-row justify-start items-center pl-6 space-x-2 py-4">
-                  <Users color="black" />
-                  <a className="px-2 text-black" href="#">
-                    Admins
-                  </a>
-                </li>
-                <li className="flex flex-row justify-start items-center pl-6 space-x-2 py-4">
-                  <Calendar color="black" />
-                  <a className="px-2 text-black" href="#">
-                    Events
-                  </a>
-                </li>
-                <li className="flex flex-row justify-start items-center pl-6 space-x-2 py-4">
-                  <Chrome color="black" />
-                  <a className="px-2 text-black" href="#">
-                    Scanners
-                  </a>
-                </li> */}
                 <li className="flex flex-row justify-start items-center pl-6 space-x-2 py-4">
                   <LogOut color="black" />
-                  <a className="px-2 text-black" href="#">
+                  <a className="px-2 text-black" onClick={authContext.logout}>
                     Logout
                   </a>
                 </li>

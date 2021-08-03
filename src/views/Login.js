@@ -1,10 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { Camera } from "react-feather";
 import { useHistory } from "react-router-dom";
-
-//
 import AuthContext from "../context/Authentication/authContext";
+import vibesImage from "../assets/pm2.jpeg";
 
 export default function Login() {
   const authContext = useContext(AuthContext);
@@ -57,71 +55,69 @@ export default function Login() {
   };
 
   return (
-    <div class="w-full h-screen w-screen body">
-      <div className="border-b border-white head">
-        <div className="bg-header1 headerIcon"></div>
-        <div className="flex justify-center items-center py-6">
-          <p className="uppercase h1">vibes</p>
-          <Camera size={30} color="white" />
-        </div>
-      </div>
-      <div className="flex justify-end -mt-10 head2">
-        <div className="headerIcon2 -mr-2"></div>
-      </div>
+    <div
+      className="w-full h-screen py-24 justify-center items-center"
+      id="body"
+    >
+      <div className="flex justify-center items-center">
+        <div className="w-6/12 p-10 rounded-lg" id="login">
+          <div className="flex flex-row justify-center items-center space-x-2">
+            <img className="rounded-lg w-11 h-11" src={vibesImage} alt="logo" />
+            <span>Vibes Scanner</span>
+          </div>
+          <div className="py-4 text-center">
+            <span id="h6">Login</span>
+          </div>
+          <form onSubmit={handleSubmit(doLogin)}>
+            <div className="mb-3">
+              <label className="block mb-2" for="username" id="label">
+                Username
+              </label>
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+                placeholder="Username"
+                {...register("username", { required: true })}
+              />
+            </div>
+            {/* errors will return when field validation fails  */}
+            {errors.username && (
+              <span className="text-danger-400">Username is required</span>
+            )}
 
-      <div className="flex justify-center py-20 px-10">
-        <form className="w-96" onSubmit={handleSubmit(doLogin)}>
-          <hgroup className="mb-2 text-center">
-            <p className="h4 uppercase">login</p>
-            {/* <P>
-              <span className="text-xs text-_2">
-                Enter your login details to gain access to your account.
-              </span>
-            </P> */}
-          </hgroup>
-          <div className="mb-4">
-            <label
-              className="block text-white text-sm font-bold mb-2"
-              for="username"
-            >
-              Username
-            </label>
-            <input
-              className="shadow appearance-none border-none rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
-              id="username"
-              {...register("username", { required: true })}
-              placeholder="Username"
-            />
+            <div className="mb-3">
+              <label className="block mb-2" for="username" id="label">
+                Password
+              </label>
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+                placeholder="Password"
+                type="password"
+                {...register("password", { required: true })}
+              />
+            </div>
+            {/* errors will return when field validation fails  */}
+            {errors.password && (
+              <span className="text-danger-400">Password is required</span>
+            )}
+            <div>
+              <a href="/forgot/password" className="text-purple-500">
+                Forgot password
+              </a>
+            </div>
+
+            <div className="mb-3 py-5">
+              <button
+                id="submit"
+                className="block w-full py-2 rounded-lg bg-black text-white"
+              >
+                Login
+              </button>
+            </div>
+          </form>
+          <div className="flex flex-row justify-center mt-2">
+            <span>© Vibes SA Inc</span>
           </div>
-          {/* errors will return when field validation fails  */}
-          {errors.username && (
-            <span className="text-danger">Password is required</span>
-          )}
-          <div className="mb-4">
-            <label
-              className="block text-white text-sm font-bold mb-2"
-              for="password"
-            >
-              Password
-            </label>
-            <input
-              className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-              id="password"
-              type="password"
-              {...register("password", { required: true })}
-              placeholder="******************"
-            />
-          </div>
-          {errors.password && (
-            <span className="text-danger">Password is required</span>
-          )}
-          <button
-            id="submit"
-            className="w-full bg-black outline-white uppercase text-white font-bold py-2 px-4 rounded"
-          >
-            Sign IN
-          </button>
-        </form>
+        </div>
       </div>
     </div>
   );

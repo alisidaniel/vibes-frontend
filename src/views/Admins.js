@@ -3,9 +3,7 @@ import { Plus } from "react-feather";
 import { Modal, Card } from "@wigxel/react-components/lib/cards";
 import { Table } from "../components/Table";
 import { isStatus } from "../components/Badge";
-import { Footer } from "../components/Footer";
 import { HeadingGroup } from "../components/Typography/Heading";
-import { Header } from "../components/Header";
 
 export default function Scanners() {
   const { toggle } = Modal.useModal();

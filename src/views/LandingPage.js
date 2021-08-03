@@ -13,9 +13,12 @@ export default function LandingPage() {
           </a>
         </div>
         <div>
-          <button className="border border-white text-white p-0 px-4 py-2 rounded-lg hover:bg-white hover:text-black">
+          <a
+            href="/login"
+            className="border border-white text-white p-0 px-4 py-2 rounded-lg hover:bg-white hover:text-black"
+          >
             Sign In
-          </button>
+          </a>
           {/* <button>Login</button> */}
         </div>
       </div>
@@ -34,9 +37,12 @@ export default function LandingPage() {
           </p>
           <p id="text2">All rights are reserved to vibes SA.</p>
           <div className="pt-10">
-            <button className="bg-black text-white px-12 py-2 rounded-lg">
+            <a
+              href="/home"
+              className="bg-black text-white px-12 py-2 rounded-lg"
+            >
               Get Started
-            </button>
+            </a>
           </div>
         </div>
         <div className="">
