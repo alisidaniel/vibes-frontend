@@ -18,6 +18,7 @@ const UserState = (props) => {
 
   const getEvents = async () => {
     try {
+      await api.get(Constants.CSRF_COOKIE);
       const response = await api.get(Constants.GET_USER_EVENTS);
       dispatch({ type: GET_USER_EVENTS, payload: response.data });
       return response.data;
@@ -29,6 +30,7 @@ const UserState = (props) => {
 
   const verifyQR = async (ticket, user_id, event_id) => {
     try {
+      await api.get(Constants.CSRF_COOKIE);
       const response = await api.post(Constants.VERIFY_QR_CODES, {
         ticket,
         user_id,
