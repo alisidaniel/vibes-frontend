@@ -5,7 +5,7 @@ import qrImage from "../assets/qr.png";
 export default function LandingPage() {
   return (
     <div className="min-w-screen min-h-screen p-10" id="body">
-      <div className="flex flex-row justify-between">
+      <div className="flex flex-row justify-between min-w-full">
         <div className="flex flex-row justify-center items-center space-x-2">
           <img className="rounded-full w-11 h-11" src={vibesImage} alt="logo" />
           <a href="#">
@@ -22,7 +22,8 @@ export default function LandingPage() {
           {/* <button>Login</button> */}
         </div>
       </div>
-      <div className="lg:flex md:flex lg:flex-row md:flex-row justify-between pt-36 xs:grid sm:grid">
+
+      {/* <div className="lg:flex md:flex lg:flex-row md:flex-row justify-between pt-36 xs:grid sm:grid">
         <div className="">
           <div className="py-4">
             <p id="text1">Scan and Verify Qr code</p>
@@ -50,7 +51,7 @@ export default function LandingPage() {
       </div>
       <span className="flex justify-center items-center" id="footer">
         © Vibes SA Inc
-      </span>
+      </span> */}
     </div>
   );
 }
