@@ -4,7 +4,7 @@ import qrImage from "../assets/qr.png";
 
 export default function LandingPage() {
   return (
-    <div className="max-w-md mx-auto min-h-screen p-10" id="body">
+    <div className="p-10" id="body">
       <div className="flex flex-row justify-between">
         <div className="flex flex-row justify-center items-center space-x-2">
           <img className="rounded-full w-11 h-11" src={vibesImage} alt="logo" />
