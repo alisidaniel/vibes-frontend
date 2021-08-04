@@ -26,6 +26,7 @@ const AdminState = (props) => {
 
   const getEvents = async () => {
     try {
+      await api.get(Constants.CSRF_COOKIE);
       const response = await api.get(Constants.GET_EVENTS);
       dispatch({ type: GET_EVENTS, payload: response.data });
       return response.data;
@@ -37,6 +38,7 @@ const AdminState = (props) => {
 
   const getScannersUsers = async () => {
     try {
+      await api.get(Constants.CSRF_COOKIE);
       const response = await api.get(Constants.GET_SCANNER_USERS);
       dispatch({ type: GET_SCANNER_USERS, payload: response.data });
       return response.data;
@@ -48,6 +50,7 @@ const AdminState = (props) => {
 
   const addUser = async (name, email, password, username, event_id) => {
     try {
+      await api.get(Constants.CSRF_COOKIE);
       const response = await api.post(Constants.ADD_USER, {
         name,
         email,
@@ -65,6 +68,7 @@ const AdminState = (props) => {
 
   const deleteUser = async (user_id) => {
     try {
+      await api.get(Constants.CSRF_COOKIE);
       const response = await api.post(Constants.DELETE_USER, { user_id });
       dispatch({ type: DELETE_USER, payload: response.data });
       return response.data;
@@ -76,6 +80,7 @@ const AdminState = (props) => {
 
   const disableEnable = async (user_id, active) => {
     try {
+      await api.get(Constants.CSRF_COOKIE);
       const response = await api.post(Constants.DISABLE_ENABLE_SCANNER_USER, {
         user_id,
         active,

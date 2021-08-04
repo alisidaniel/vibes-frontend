@@ -8,6 +8,7 @@ import {
   TicketModel1,
   TicketModel2,
   TicketModel3,
+  TicketModel4,
 } from "../components/Messages";
 import UserContext from "../context/User/userContext";
 import AuthContext from "../context/Authentication/authContext";
@@ -31,7 +32,7 @@ export default function Home() {
     const btnStopCamera = document.getElementById("btn-stop-camera");
     const qrBackgroundImg = document.getElementById("qrImg");
     let scanning = false;
-    qrcode.callback = (res) => {
+    qrcode.callback = async (res) => {
       if (res) {
         outputData.innerText = res;
         scanning = false;
@@ -42,24 +43,8 @@ export default function Home() {
         canvasElement.hidden = true;
         btnScanQR.hidden = false;
         qrBackgroundImg.hidden = false;
-        userContext
-          .verifyQR(res, user.id, user.event_id)
-          .then((res) => {
-            console.log("processsing....", res.response.status);
-            if (res.response.status == 401) {
-              toggle("401");
-            }
-            if (res.response.status == 400) {
-              toggle("400");
-            }
-            if (res.response.status == 200) {
-              toggle("200");
-            }
-          })
-          .catch((err) => {
-            console.log("error");
-            console.log(err);
-          });
+        // send response to verify scan
+        await verify(res, user.id, user.event_id);
       }
     };
 
@@ -108,6 +93,35 @@ export default function Home() {
       }
     }
   }, []);
+
+  const verify = async (ticket, user, event) => {
+    userContext
+      .verifyQR(ticket, user, event)
+      .then((response) => {
+        // console.log("processsing....", res.response);
+        if (response.status) {
+          toggle("Success");
+        }
+        if (response.response.status == 403) {
+          toggle("Exist");
+        }
+        if (response.response.status == 400) {
+          toggle("Invalid");
+          setTimeout(function () {
+            window.location.reload(false);
+          }, 4000);
+        }
+        if (response.response.status == 401) {
+          toggle("Unauthorized");
+          setTimeout(function () {
+            window.location.reload(false);
+          }, 4000);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div className="w-full h-screen w-screen">
@@ -172,6 +186,7 @@ export default function Home() {
       <TicketModel1 />
       <TicketModel2 />
       <TicketModel3 />
+      <TicketModel4 />
     </div>
   );
 }

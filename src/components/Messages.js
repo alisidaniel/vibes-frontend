@@ -7,7 +7,7 @@ import warning from "../assets/warning.png";
 
 export const TicketModel1 = () => {
   return (
-    <Modal name="401" size="sm">
+    <Modal name="Exist" size="sm">
       <Card style={{ backgroundColor: "white" }}>
         <div className="grid justify-center items-center">
           <HeadingGroup className="ml-6" heading="Warning" />
@@ -21,10 +21,10 @@ export const TicketModel1 = () => {
 
 export const TicketModel2 = () => {
   return (
-    <Modal name="400" size="sm">
+    <Modal name="Invalid" size="sm">
       <Card style={{ backgroundColor: "white" }}>
         <div className="grid justify-center items-center">
-          <HeadingGroup className="ml-10" heading="Error" />
+          <HeadingGroup className="ml-8" heading="Invalid" />
           <img className="w-10 ml-12" src={failed} alt="failed logo" />
           <span>Ticket Not Recognized</span>
         </div>
@@ -35,12 +35,26 @@ export const TicketModel2 = () => {
 
 export const TicketModel3 = () => {
   return (
-    <Modal name="200" size="sm">
+    <Modal name="Success" size="sm">
       <Card style={{ backgroundColor: "white" }}>
         <div className="grid justify-center items-center">
           <HeadingGroup heading="Success" />
           <img className="w-10 ml-5" src={success} alt="success logo" />
           <span>Ticket valid</span>
+        </div>
+      </Card>
+    </Modal>
+  );
+};
+
+export const TicketModel4 = () => {
+  return (
+    <Modal name="Unauthorized" size="sm">
+      <Card style={{ backgroundColor: "white" }}>
+        <div className="grid justify-center items-center">
+          <HeadingGroup className="text-center" heading="Error" />
+          <img className="w-10 ml-36" src={failed} alt="error logo" />
+          <span>Something went wrong! Refresh and Try Again.</span>
         </div>
       </Card>
     </Modal>
