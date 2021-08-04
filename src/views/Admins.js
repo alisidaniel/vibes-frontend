@@ -6,8 +6,15 @@ import { isStatus } from "../components/Badge";
 import { HeadingGroup } from "../components/Typography/Heading";
 import AdminContext from "../context/Admin/adminContect";
 import PageLoader from "./Loader";
+import { useForm } from "react-hook-form";
 
 export default function Scanners() {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
   const { toggle } = Modal.useModal();
   const adminContext = useContext(AdminContext);
   const [admins, setAdmins] = useState([]);
@@ -22,6 +29,22 @@ export default function Scanners() {
       .catch((err) => {});
   }, []);
 
+  const doCreateAdmin = async (formData) => {
+    console.log(formData);
+    adminContext
+      .addAdmin(
+        formData.name,
+        formData.email,
+        formData.password,
+        formData.username
+      )
+      .then((res) => {
+        window.location.reload(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <section className="px-4 py-4 container mx-auto max-w-screen-lg select-none">
       <div className="flex flex justify-between items-between mb-2">
@@ -57,40 +80,62 @@ export default function Scanners() {
             heading="Create Admin"
             subHeading="Create new admin for vibe events."
           />
-          <form>
+          <form onSubmit={handleSubmit(doCreateAdmin)}>
             <div className="mb-4">
               <label
-                className="block text-white text-sm font-bold mb-2"
+                className="block text-black text-sm font-bold mb-2"
+                for="name"
+              >
+                Name
+              </label>
+              <input
+                className="shadow appearance-none border-none rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+                placeholder="Name"
+                {...register("name", { required: true })}
+              />
+            </div>
+            {/* errors will return when field validation fails  */}
+            {errors.name && (
+              <span className="text-danger-400">Name is required</span>
+            )}
+            <div className="mb-4">
+              <label
+                className="block text-black text-sm font-bold mb-2"
                 for="username"
               >
                 Username
               </label>
               <input
                 className="shadow appearance-none border-none rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
-                id="username"
-                type="text"
                 placeholder="Username"
-                required
+                {...register("username", { required: true })}
               />
             </div>
+            {/* errors will return when field validation fails  */}
+            {errors.username && (
+              <span className="text-danger-400">Username is required</span>
+            )}
             <div className="mb-4">
               <label
-                className="block text-white text-sm font-bold mb-2"
+                className="block text-black text-sm font-bold mb-2"
                 for="username"
               >
                 Email
               </label>
               <input
                 className="shadow appearance-none border-none rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
-                id="username"
-                type="text"
+                type="email"
                 placeholder="Email"
-                required
+                {...register("email", { required: true })}
               />
             </div>
+            {/* errors will return when field validation fails  */}
+            {errors.email && (
+              <span className="text-danger-400">Email is required</span>
+            )}
             <div className="mb-4">
               <label
-                className="block text-white text-sm font-bold mb-2"
+                className="block text-black text-sm font-bold mb-2"
                 for="password"
               >
                 Password
@@ -100,9 +145,13 @@ export default function Scanners() {
                 id="password"
                 type="password"
                 placeholder="******************"
-                required
+                {...register("password", { required: true })}
               />
             </div>
+            {/* errors will return when field validation fails  */}
+            {errors.password && (
+              <span className="text-danger-400">Password is required</span>
+            )}
 
             <button className="w-full bg-black outline-white uppercase text-white font-bold py-2 px-4 rounded-lg">
               Submit

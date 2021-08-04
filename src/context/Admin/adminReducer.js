@@ -1,5 +1,6 @@
 import {
   ADD_USER,
+  ADD_ADMIN,
   GET_ADMINS,
   DELETE_USER,
   DISABLE_ENABLE_SCANNER_USER,
@@ -11,6 +12,10 @@ import {
 export default (state, action) => {
   switch (action.type) {
     case ADD_USER:
+      return {
+        ...state,
+      };
+    case ADD_ADMIN:
       return {
         ...state,
       };

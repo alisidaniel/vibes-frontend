@@ -12,6 +12,7 @@ import {
   GET_SCANNER_USERS,
   ADMIN_ERROR,
   GET_ADMINS,
+  ADD_ADMIN,
 } from "../types";
 
 const AdminState = (props) => {
@@ -78,6 +79,23 @@ const AdminState = (props) => {
     }
   };
 
+  const addAdmin = async (name, email, password, username) => {
+    try {
+      await api.get(Constants.CSRF_COOKIE);
+      const response = await api.post(Constants.ADD_ADMIN, {
+        name,
+        email,
+        password,
+        username,
+      });
+      dispatch({ type: ADD_ADMIN, payload: response.data });
+      return response.data;
+    } catch (error) {
+      dispatch({ type: ADMIN_ERROR, payload: error.response.data.message });
+      return error;
+    }
+  };
+
   const deleteUser = async (user_id) => {
     try {
       await api.get(Constants.CSRF_COOKIE);
@@ -113,6 +131,7 @@ const AdminState = (props) => {
         scanners: state.scanners,
         admins: state.admins,
         addUser,
+        addAdmin,
         deleteUser,
         getEvents,
         getAdmins,
