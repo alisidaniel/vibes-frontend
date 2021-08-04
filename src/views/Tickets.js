@@ -7,56 +7,9 @@ import { StatusBadge, isStatus } from "../components/Badge";
 
 export default function Tickets() {
   const history = useHistory();
-  const dumData = [
-    {
-      index: 0,
-      name: "Alisi Daniel",
-      me: "Alisi Joe",
-      you: "Alisi Joe",
-      him: "Alisi Joe",
-    },
-    {
-      index: 1,
-      name: "Alisi Joe",
-      me: "Alisi Joe",
-      you: "Alisi Joe",
-      him: "Alisi Joe",
-    },
-    {
-      index: 2,
-      name: "Alisi Joe",
-      me: "Alisi Joe",
-      you: "Alisi Joe",
-      him: "Alisi Joe",
-    },
-    {
-      name: "Alisi Joe",
-      me: "Alisi Joe",
-      you: "Alisi Joe",
-      him: "Alisi Joe",
-    },
-    {
-      index: 3,
-      name: "Alisi Joe",
-      me: "Alisi Joe",
-      you: "Alisi Joe",
-      him: "Alisi Joe",
-    },
-    {
-      index: 4,
-      name: "Alisi Joe",
-      me: "Alisi Joe",
-      you: "Alisi Joe",
-      him: "Alisi Joe",
-    },
-    {
-      index: 5,
-      name: "Alisi Joe",
-      me: "Alisi Joe",
-      you: "Alisi Joe",
-      him: "Alisi Joe",
-    },
-  ];
+  const { state } = history.location;
+  const { tickets, user } = state;
+
   return (
     <section className="px-4 py-4 container mx-auto max-w-screen-lg select-none">
       <div className="flex flex-row justify-between items-between sm:px-4 md:px-2 xs:px-4 py-3">
@@ -74,29 +27,29 @@ export default function Tickets() {
       </div>
       <div className="ml-10">
         <Table
-          columns={["S/N", "Ticket", "Scanner Name", "Event", "Time"]}
-          items={dumData}
-          renderRow={renderPage}
+          columns={["S/N", "Ticket", "Scanner Name", "Time"]}
+          items={tickets}
+          renderRow={RenderPage}
         />
       </div>
     </section>
   );
 }
 
-const renderPage = (item, index) => {
-  console.log(item);
+const RenderPage = (item, index) => {
+  const history = useHistory();
+  const { state } = history.location;
+  const { user } = state;
   return (
     <tr className={`${index % 2 === 0 ? "bg-gray-light" : ""}`}>
-      {[index + 1, item.name, item.me, item.you, "2 days ago"].map(
-        (text, idx) => (
-          <td
-            key={idx}
-            className={`font-light py-2 ${idx === 0 ? "pl-4" : "px-2"}`}
-          >
-            {isStatus(text) ? <StatusBadge status={String(text)} /> : text}
-          </td>
-        )
-      )}
+      {[index + 1, item.ticket, user.name, item.created_at].map((text, idx) => (
+        <td
+          key={idx}
+          className={`font-light py-2 ${idx === 0 ? "pl-4" : "px-2"}`}
+        >
+          {isStatus(text) ? <StatusBadge status={String(text)} /> : text}
+        </td>
+      ))}
     </tr>
   );
 };

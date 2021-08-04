@@ -1,8 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import AdminContext from "../context/Admin/adminContect";
 import PageLoader from "./Loader";
+import { Link, useHistory } from "react-router-dom";
+
+import { List, ArrowLeft } from "react-feather";
+import RefreshButton from "../components/Buttons/RefreshButton";
 
 export default function Dashboard() {
+  const history = useHistory();
   const adminContext = useContext(AdminContext);
   const [scanners, setScanners] = useState([]);
   const [events, setEvents] = useState([]);
@@ -20,12 +25,14 @@ export default function Dashboard() {
       .getEvents()
       .then((res) => {
         setEvents(res.data.data);
+        setLoading(false);
       })
       .catch((err) => {});
     adminContext
       .getAdmins()
       .then((res) => {
         setAdmins(res.data.data);
+        setLoading(false);
       })
       .catch((err) => {});
   }, []);
@@ -34,6 +41,12 @@ export default function Dashboard() {
       <div>
         <div className="pb-4">
           <span id="h1">Overview</span>
+        </div>
+        <div className="flex flex-row justify-between">
+          <RefreshButton
+            onClick={() => window.location.reload(false)}
+            loading={false}
+          />
         </div>
         {loading ? (
           <PageLoader />

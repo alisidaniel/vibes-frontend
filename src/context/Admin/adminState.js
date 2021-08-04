@@ -110,6 +110,7 @@ const AdminState = (props) => {
 
   const disableEnable = async (user_id, active) => {
     try {
+      console.log(active, user_id);
       await api.get(Constants.CSRF_COOKIE);
       const response = await api.post(Constants.DISABLE_ENABLE_SCANNER_USER, {
         user_id,
