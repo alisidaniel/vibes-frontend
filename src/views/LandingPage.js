@@ -22,7 +22,7 @@ export default function LandingPage() {
           {/* <button>Login</button> */}
         </div>
       </div>
-      <div className="flex flex-row justify-between pt-36">
+      <div className="lg:flex md:flex lg:flex-row md:flex-row justify-between pt-36 xs:grid sm:grid">
         <div className="">
           <div className="py-4">
             <p id="text1">Scan and Verify Qr code</p>
@@ -32,7 +32,6 @@ export default function LandingPage() {
             This scanner only works with QR codes generated from Vibes tickets
           </p>
           <p id="text2">
-            {" "}
             Attempts to use otherwise is prosecutable under the law
           </p>
           <p id="text2">All rights are reserved to vibes SA.</p>

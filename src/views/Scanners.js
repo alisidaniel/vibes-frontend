@@ -5,6 +5,7 @@ import { Table } from "../components/Table";
 import { HeadingGroup } from "../components/Typography/Heading";
 import AdminContext from "../context/Admin/adminContect";
 import { useForm } from "react-hook-form";
+// import ReactPaginate from "react-paginate";
 
 export default function Scanners() {
   const { toggle } = Modal.useModal();
