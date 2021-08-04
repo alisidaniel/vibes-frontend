@@ -5,6 +5,7 @@ import RefreshButton from "../components/Buttons/RefreshButton";
 import { Header } from "../components/Header";
 import logo1 from "../assets/01.png";
 import UserContext from "../context/User/userContext";
+import PageLoader from "./Loader";
 
 export default function Events() {
   const history = useHistory();
@@ -46,7 +47,7 @@ export default function Events() {
         </div>
         <div>
           {loading ? (
-            ""
+            <PageLoader />
           ) : (
             <div>
               <div className="flex flex-row py-3">

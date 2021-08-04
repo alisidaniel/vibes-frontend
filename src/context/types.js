@@ -18,6 +18,7 @@ export const VERIFY_QR_CODES = "VERIFY_QR_CODES";
 
 // ADMIN  TYPES
 export const ADD_USER = "ADD_USER";
+export const GET_ADMINS = "GET_ADMINS";
 export const DELETE_USER = "DELETE_USER";
 export const DISABLE_ENABLE_SCANNER_USER = "DISABLE_ENABLE_SCANNER_USER";
 export const GET_EVENTS = "GET_EVENTS";

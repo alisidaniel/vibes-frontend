@@ -26,7 +26,8 @@ export const VERIFY_QR_CODES = "/api/ticket/scanner/verify";
 export const GET_USER_EVENTS = "/api/user/event";
 
 // ADMIN
-export const ADD_USER = "api/add/user";
+export const ADD_USER = "/api/add/user";
+export const GET_ADMINS = "/api/admins";
 export const DELETE_USER = "/api/remove/user";
 export const GET_SCANNER_USERS = "/api/scanner/user";
 export const GET_EVENTS = "/api/events";

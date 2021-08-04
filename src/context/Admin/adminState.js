@@ -11,12 +11,14 @@ import {
   DISABLE_ENABLE_SCANNER_USER,
   GET_SCANNER_USERS,
   ADMIN_ERROR,
+  GET_ADMINS,
 } from "../types";
 
 const AdminState = (props) => {
   const initialState = {
     events: null,
     scanners: null,
+    admins: null,
     loading: true,
   };
 
@@ -35,7 +37,17 @@ const AdminState = (props) => {
       return error;
     }
   };
-
+  const getAdmins = async () => {
+    try {
+      await api.get(Constants.CSRF_COOKIE);
+      const response = await api.get(Constants.GET_ADMINS);
+      dispatch({ type: GET_ADMINS, payload: response.data });
+      return response.data;
+    } catch (error) {
+      dispatch({ type: ADMIN_ERROR, payload: error.response.data.message });
+      return error;
+    }
+  };
   const getScannersUsers = async () => {
     try {
       await api.get(Constants.CSRF_COOKIE);
@@ -99,9 +111,11 @@ const AdminState = (props) => {
         loading: state.loading,
         events: state.events,
         scanners: state.scanners,
+        admins: state.admins,
         addUser,
         deleteUser,
         getEvents,
+        getAdmins,
         getScannersUsers,
         disableEnable,
       }}

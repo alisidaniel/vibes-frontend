@@ -1,5 +1,6 @@
 import {
   ADD_USER,
+  GET_ADMINS,
   DELETE_USER,
   DISABLE_ENABLE_SCANNER_USER,
   GET_EVENTS,
@@ -16,6 +17,7 @@ export default (state, action) => {
     case DELETE_USER:
       return {
         ...state,
+        // admins: action.payload
       };
     case DISABLE_ENABLE_SCANNER_USER:
       return {
@@ -29,6 +31,11 @@ export default (state, action) => {
     case GET_SCANNER_USERS:
       return {
         ...state,
+      };
+    case GET_ADMINS:
+      return {
+        ...state,
+        admins: action.payload,
       };
     case ADMIN_ERROR:
       return {

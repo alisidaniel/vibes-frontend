@@ -2,8 +2,6 @@ import React, { useState, useContext, useEffect } from "react";
 import { List, ArrowLeft } from "react-feather";
 import { useHistory } from "react-router-dom";
 import RefreshButton from "../components/Buttons/RefreshButton";
-// import { Footer } from "../components/Footer";
-// import { Header } from "../components/Header";
 import logo1 from "../assets/01.png";
 
 export default function EventList() {

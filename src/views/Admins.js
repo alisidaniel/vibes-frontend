@@ -4,53 +4,24 @@ import { Modal, Card } from "@wigxel/react-components/lib/cards";
 import { Table } from "../components/Table";
 import { isStatus } from "../components/Badge";
 import { HeadingGroup } from "../components/Typography/Heading";
+import AdminContext from "../context/Admin/adminContect";
+import PageLoader from "./Loader";
 
 export default function Scanners() {
   const { toggle } = Modal.useModal();
-  const dumData = [
-    {
-      index: 0,
-      name: "Alisi Daniel",
-      me: "Alisi Joe",
-      status: "Disable",
-    },
-    {
-      index: 1,
-      name: "Alisi Joe",
-      me: "Alisi Joe",
-      status: "Enable",
-    },
-    {
-      index: 2,
-      name: "Alisi Joe",
-      me: "Alisi Joe",
-      status: "Enable",
-    },
-    {
-      name: "Alisi Joe",
-      me: "Alisi Joe",
-      you: "Alisi Joe",
-      status: "Disable",
-    },
-    {
-      index: 3,
-      name: "Alisi Joe",
-      me: "Alisi Joe",
-      status: "Enable",
-    },
-    {
-      index: 4,
-      name: "Alisi Joe",
-      me: "Alisi Joe",
-      status: "Disable",
-    },
-    {
-      index: 5,
-      name: "Alisi Joe",
-      me: "Alisi Joe",
-      status: "Disable",
-    },
-  ];
+  const adminContext = useContext(AdminContext);
+  const [admins, setAdmins] = useState([]);
+  const [loading, setLoader] = useState([]);
+
+  useEffect(() => {
+    adminContext
+      .getAdmins()
+      .then((res) => {
+        setAdmins(res.data.data);
+      })
+      .catch((err) => {});
+  }, []);
+
   return (
     <section className="px-4 py-4 container mx-auto max-w-screen-lg select-none">
       <div className="flex flex justify-between items-between mb-2">
@@ -75,9 +46,9 @@ export default function Scanners() {
       </div>
       <div className="ml-10">
         <Table
-          columns={["S/N", "Username", "Email", "Date Created", ""]}
-          items={dumData}
-          renderRow={renderPage}
+          columns={["S/N", "Name", "Username", "Email", "Date Created", ""]}
+          items={admins}
+          renderRow={RenderPage}
         />
       </div>
       <Modal name="create-scanner" size="sm">
@@ -143,37 +114,44 @@ export default function Scanners() {
   );
 }
 
-const renderPage = (item, index) => {
+const RenderPage = (item, index) => {
+  const adminContext = React.useContext(AdminContext);
+  const deleteUser = async (user) => {
+    try {
+      await adminContext.deleteUser(user);
+      window.location.reload(false);
+    } catch (e) {
+      console.log(e);
+    }
+  };
   return (
     <tr className={`${index % 2 === 0 ? "bg-gray-light" : ""}`}>
-      {[index + 1, item.name, item.me, item.you, item.status].map(
-        (text, idx) => (
-          <td
-            key={idx}
-            className={`font-light py-2 ${idx === 0 ? "pl-4" : "px-2"}`}
-          >
-            {isStatus(text) ? (
-              <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
-                <input
-                  type="checkbox"
-                  name="toggle"
-                  id="toggle"
-                  class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"
-                />
-                <label
-                  for="toggle"
-                  class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"
-                ></label>
-                <label for="toggle" class="text-xs text-gray-700">
-                  Disable
-                </label>
-              </div>
-            ) : (
-              text
-            )}
-          </td>
-        )
-      )}
+      {[
+        index + 1,
+        item.name,
+        item.username,
+        item.email,
+        item.created_at,
+        "delete",
+      ].map((text, idx) => (
+        <td
+          key={idx}
+          className={`font-light py-2 ${idx === 0 ? "pl-4" : "px-2"}`}
+        >
+          {text === "delete" ? (
+            <button
+              onClick={() => {
+                deleteUser(item.id);
+              }}
+              className="bg-red-500 px-2 py-1 rounded-lg text-white"
+            >
+              Delete
+            </button>
+          ) : (
+            text
+          )}
+        </td>
+      ))}
     </tr>
   );
 };
