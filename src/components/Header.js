@@ -1,7 +1,8 @@
 import React, { useState, useContext } from "react";
-import { User } from "react-feather";
+import { Menu, User } from "react-feather";
 import AuthContext from "../context/Authentication/authContext";
 import vibesImage from "../assets/pm2.jpeg";
+import { Sidebar } from "./Sidebar";
 export const Header = ({
   appName,
   link,
@@ -11,20 +12,32 @@ export const Header = ({
   eventName,
 }) => {
   const [dropdown, setDropdown] = useState(false);
+  const [slider, setSlider] = useState(false);
   const authContext = useContext(AuthContext);
   return (
-    <div className="w-full h-20" id="header">
+    <div className="w-full h-20 absolute" id="header">
       <div className="flex flex-row justify-between p-5">
         <div className="flex flex-row justify-center items-center space-x-2">
-          <img
-            className="rounded-full w-11 h-11 bg-white text-white"
-            src={vibesImage}
-            alt="logo"
-          />
-          <a href={link}>
-            <span className="text-white">{title}</span>
-          </a>
+          <div className="hidden md:flex lg:flex xl:flex space-x-2">
+            <img
+              className="rounded-full w-11 h-11 bg-white text-white"
+              src={vibesImage}
+              alt="logo"
+            />
+            <a className="py-2" href={link}>
+              <span className="text-white ">{title}</span>
+            </a>
+          </div>
+          <div className="visible md:invisible lg:invisible text-white">
+            <Menu
+              onClick={() => {
+                setSlider(!slider);
+              }}
+              color="white"
+            />
+          </div>
         </div>
+        {slider ? <Sidebar /> : null}
         <div className="flex flex-row justify-center items-center space-x-4">
           <span className="text-white">Hi, Dani</span>
           <button

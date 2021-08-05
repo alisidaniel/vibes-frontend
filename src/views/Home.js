@@ -133,24 +133,15 @@ export default function Home() {
         eventLink="/events"
         eventName="Event Lists"
       />
-      <div className="flex flex-row justify-between p-5">
-        <button
-          onClick={() => history.goBack()}
-          className="flex flex-row shadow px-8 text-purple-400 px-2 py-2 rounded-lg space-x-2"
-        >
-          <Send className="" />
-          <span> View results</span>
-        </button>
-      </div>
-      <div className="grid p-3 h-full justify-center items-center h-56">
-        <p className="-mb-24 pl-20" id="qrTitle">
-          Scan Qr Code
-        </p>
+      <div className="grid p-0 h-full justify-center items-center h-full">
         <div id="qr-result" hidden="">
           <b></b> <span className="text-white" id="outputData"></span>
         </div>
-        <div className="grid -mt-16 p-10">
+        <div className="grid justify-center items-center">
           <canvas className="ml-0" hidden="" id="qr-canvas"></canvas>
+          <p className="pl-10 mb-2" id="qrTitle">
+            Scan Qr Code
+          </p>
           <img
             className="h-56 ml-5"
             src={qr1}

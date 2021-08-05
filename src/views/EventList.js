@@ -75,18 +75,3 @@ export default function EventList() {
     </section>
   );
 }
-{
-  /* <a href="/dashboard/events/tickets">
-<div className="w-80 px-2 md:w-full lg:w-full h-19 shadow-lg rounded-lg flex flex-row space-x-2">
-  <div className="bg-purple w-2 rounded-l-lg"></div>
-  <div className="flex flex-row justify-between items-evenly">
-    <div className="flex flex-row justify-center items-center space-x-3">
-      <div className="flex event-card rounded-full w-12 h-12 justify-center items-center text-white font-bold">
-        <span>Ba</span>
-      </div>
-      <div className="font-bold">Banjoko</div>
-    </div>
-  </div>
-</div>
-</a> */
-}

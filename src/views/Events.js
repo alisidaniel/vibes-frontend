@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { ArrowLeft } from "react-feather";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import RefreshButton from "../components/Buttons/RefreshButton";
 import { Header } from "../components/Header";
 import logo1 from "../assets/01.png";
@@ -16,6 +16,7 @@ export default function Events() {
     userContext
       .getEvents()
       .then((res) => {
+        console.log(res.data);
         setEvents(res.data);
         setLoading(false);
       })
@@ -31,8 +32,9 @@ export default function Events() {
         eventLink="/events"
         eventName="Event Lists"
       />
-      <div className="p-16">
-        <div className="flex flex-row justify-between">
+
+      <div className="p-10">
+        <div className="flex flex-row justify-between mt-20">
           <RefreshButton
             onClick={() => window.location.reload(false)}
             loading={false}
@@ -50,7 +52,7 @@ export default function Events() {
             <PageLoader />
           ) : (
             <div>
-              <div className="flex flex-row py-3">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 py-3">
                 <div className="w-48 h-28 shadow-lg border" id="box">
                   <span className="font-bold p-4">Events</span>
                   <img className="w-36 h-20" src={logo1} alt="logo" />
@@ -61,12 +63,17 @@ export default function Events() {
                 </div>
               </div>
               {events.map((item) => (
-                <a href="/events/history">
-                  <div className="flex flex-row justify-between items-between shadow p-5 mt-4">
+                <Link
+                  to={{
+                    pathname: "/events/history",
+                    state: { data: item },
+                  }}
+                >
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 justify-between items-between shadow p-5 mt-4">
                     <p className="text-purple-500">{item.name}</p>
-                    <p>{item.created_at}</p>
+                    <p className="text-sm">{item.created_at}</p>
                   </div>
-                </a>
+                </Link>
               ))}
             </div>
           )}

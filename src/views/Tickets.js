@@ -25,13 +25,12 @@ export default function Tickets() {
           <span> Back</span>
         </button>
       </div>
-      <div className="ml-10">
-        <Table
-          columns={["S/N", "Ticket", "Scanner Name", "Time"]}
-          items={tickets}
-          renderRow={RenderPage}
-        />
-      </div>
+
+      <Table
+        columns={["S/N", "Ticket", "Scanner Name", "Time"]}
+        items={tickets}
+        renderRow={RenderPage}
+      />
     </section>
   );
 }
@@ -41,7 +40,7 @@ const RenderPage = (item, index) => {
   const { state } = history.location;
   const { user } = state;
   return (
-    <tr className={`${index % 2 === 0 ? "bg-gray-light" : ""}`}>
+    <tr className={`${index % 2 === 0 ? "bg-green-100" : ""}`}>
       {[index + 1, item.ticket, user.name, item.created_at].map((text, idx) => (
         <td
           key={idx}

@@ -133,6 +133,12 @@
 .event-card {
   background: linear-gradient(101.77deg, #000000 0%, #d55cff 100%);
 }
+.event-card2 {
+  background: linear-gradient(101.77deg, #cc2b5e 0%, #753a88 100%);
+}
+.event-card3 {
+  background: linear-gradient(101.77deg, #02aab0 0%, #00cdac 100%);
+}
 
 .toggle-checkbox:checked {
   @apply: right-0 border-green;
@@ -237,7 +243,7 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 22px;
-  color: #808080;
+  /* color: #808080; */
 }
 
 #active {
@@ -249,7 +255,7 @@
   font-weight: 500;
   font-size: 28px;
   line-height: 34px;
-  color: #000000;
+  /* color: #000000; */
 }
 
 #qrTitle {

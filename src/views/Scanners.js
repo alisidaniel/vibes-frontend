@@ -5,14 +5,12 @@ import { Table } from "../components/Table";
 import { HeadingGroup } from "../components/Typography/Heading";
 import AdminContext from "../context/Admin/adminContect";
 import { useForm } from "react-hook-form";
-// import ReactPaginate from "react-paginate";
 
 export default function Scanners() {
   const { toggle } = Modal.useModal();
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
   const [scanners, setScanners] = useState([]);
@@ -41,6 +39,7 @@ export default function Scanners() {
         formData.event
       )
       .then((res) => {
+        alert("Successful");
         window.location.reload(false);
       })
       .catch((err) => {
@@ -49,7 +48,7 @@ export default function Scanners() {
   };
 
   return (
-    <section className="px-4 py-4 container mx-auto max-w-screen-lg select-none">
+    <section className="px-2 py-2 container mx-auto max-w-screen-lg select-none">
       <div>
         <div className="flex flex-row justify-between itmes-between mb-2">
           <div className="flex flex-row">
@@ -71,13 +70,13 @@ export default function Scanners() {
             </button>
           </div>
         </div>
-        <div className="ml-10">
-          <Table
-            columns={["S/N", "Username", "Event", "Status", "Date"]}
-            items={scanners}
-            renderRow={RenderPage}
-          />
-        </div>
+
+        <Table
+          columns={["S/N", "Username", "Event", "Status", "Date"]}
+          items={scanners}
+          renderRow={RenderPage}
+        />
+
         <Modal name="create-scanner" size="sm">
           <Card style={{ backgroundColor: "white" }}>
             <HeadingGroup
@@ -85,6 +84,27 @@ export default function Scanners() {
               subHeading="Create new scanner for vibe events."
             />
             <form onSubmit={handleSubmit(doCreateUser)}>
+              <div className="mb-4">
+                <label
+                  className="block text-black text-sm font-bold mb-2"
+                  for="password"
+                >
+                  Select event
+                </label>
+                <select
+                  className="shadow appearance-none border-none py-2 px-3 rounded w-full text-black leading-tight focus:outline-none focus:shadow-outlin"
+                  {...register("event", { required: true })}
+                >
+                  <option>Choose event</option>
+                  {events.map((item) => (
+                    <option value={item.ref}>{item.name}</option>
+                  ))}
+                </select>
+              </div>
+              {/* errors will return when field validation fails  */}
+              {errors.event && (
+                <span className="text-danger-400">Event is required</span>
+              )}
               <div className="mb-4">
                 <label
                   className="block text-black text-sm font-bold mb-2"
@@ -157,28 +177,6 @@ export default function Scanners() {
                 <span className="text-danger-400">Password is required</span>
               )}
 
-              <div className="mb-4">
-                <label
-                  className="block text-black text-sm font-bold mb-2"
-                  for="password"
-                >
-                  Assigin event
-                </label>
-                <select
-                  className="shadow appearance-none border-none py-2 px-3 rounded w-full text-black leading-tight focus:outline-none focus:shadow-outlin"
-                  {...register("event", { required: true })}
-                >
-                  <option>Choose event</option>
-                  {events.map((item) => (
-                    <option value={item.ref}>{item.name}</option>
-                  ))}
-                </select>
-              </div>
-              {/* errors will return when field validation fails  */}
-              {errors.event && (
-                <span className="text-danger-400">Event is required</span>
-              )}
-
               <button className="w-full bg-black outline-white uppercase text-white font-bold py-2 px-4 rounded-lg">
                 Submit
               </button>
@@ -196,7 +194,6 @@ const RenderPage = (item, index) => {
     adminContext
       .disableEnable(user_id, active)
       .then((res) => {
-        console.log("successful");
         if (active) {
           alert("Scanner user Deactivated.");
           window.location.reload(false);
@@ -209,7 +206,7 @@ const RenderPage = (item, index) => {
       .catch((err) => {});
   };
   return (
-    <tr className={`${index % 2 === 0 ? "bg-gray-light" : ""}`}>
+    <tr className={`${index % 2 === 0 ? "bg-green-100" : ""}`}>
       {[
         index + 1,
         item.username,

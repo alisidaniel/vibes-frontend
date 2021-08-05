@@ -14,7 +14,10 @@ export default function PasswordRecover() {
       id="body"
     >
       <div className="flex justify-center items-center">
-        <div className="w-6/12 p-10 rounded-lg" id="login">
+        <div
+          className="p-10 lg:w-7/12 md:w-5/12 sm:w-full xs:w-full rounded-lg"
+          id="login"
+        >
           <div className="flex flex-row justify-center items-center space-x-2">
             <img className="rounded-lg w-11 h-11" src={vibesImage} alt="logo" />
             <span>Vibes Scanner</span>

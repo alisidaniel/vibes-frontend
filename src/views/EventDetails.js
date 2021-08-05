@@ -8,65 +8,14 @@ import { useHistory } from "react-router-dom";
 
 export default function EventDetails() {
   const history = useHistory();
-  const dumData = [
-    {
-      index: 0,
-      name: "Alisi Daniel",
-      me: "Alisi Joe",
-      you: "Alisi Joe",
-      him: "Alisi Joe",
-    },
-    {
-      index: 1,
-      name: "Alisi Joe",
-      me: "Alisi Joe",
-      you: "Alisi Joe",
-      him: "Alisi Joe",
-    },
-    {
-      index: 2,
-      name: "Alisi Joe",
-      me: "Alisi Joe",
-      you: "Alisi Joe",
-      him: "Alisi Joe",
-      status: "closed",
-    },
-    {
-      name: "Alisi Joe",
-      me: "Alisi Joe",
-      you: "Alisi Joe",
-      him: "Alisi Joe",
-    },
-    {
-      index: 3,
-      name: "Alisi Joe",
-      me: "Alisi Joe",
-      you: "Alisi Joe",
-      him: "Alisi Joe",
-      status: "active",
-    },
-    {
-      index: 4,
-      name: "Alisi Joe",
-      me: "Alisi Joe",
-      you: "Alisi Joe",
-      him: "Alisi Joe",
-      status: "success",
-    },
-    {
-      index: 5,
-      name: "Alisi Joe",
-      me: "Alisi Joe",
-      you: "Alisi Joe",
-      him: "Alisi Joe",
-      status: "approved",
-    },
-  ];
+  const { state } = history.location;
+  const { data } = state;
+
   return (
     <div className="w-full h-screen w-screen">
       <Header appName="vibes" link="/home" username="Dani" title="Home" />
-      <div className="p-12">
-        <div className="flex flex-row justify-between">
+      <div className="p-7 mb-2">
+        <div className="flex flex-row justify-between mt-16 mb-4">
           <RefreshButton
             onClick={() => window.location.reload(false)}
             loading={false}
@@ -79,30 +28,23 @@ export default function EventDetails() {
             <span> Back</span>
           </button>
         </div>
-        <div className="ml-10">
-          <Table
-            columns={["S/N", "Ticket", "Scanner Name", "Event", "Status", ""]}
-            items={dumData}
-            renderRow={renderPage}
-          />
-        </div>
+        <Table
+          columns={["S/N", "Ticket", "Date"]}
+          items={data.tickets}
+          renderRow={RenderPage}
+        />
       </div>
     </div>
   );
 }
 
-const renderPage = (item, index) => {
-  console.log(item);
+const RenderPage = (item, index) => {
   return (
-    <tr className={`${index % 2 === 0 ? "bg-gray-light" : ""}`}>
+    <tr className={`${index % 2 === 0 ? "bg-green-100" : ""}`}>
       {[
         index + 1,
-        item.name,
-        item.me,
-        item.you,
-        item.him,
-        item.status,
-        null,
+        `${item.ticket.substring(0, 7)}..`,
+        item.created_at.substring(0, 10),
       ].map((text, idx) => (
         <td
           key={idx}

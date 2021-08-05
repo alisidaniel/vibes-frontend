@@ -11,7 +11,17 @@ import {
 import { Modal } from "@wigxel/react-components/lib/cards";
 import Theme from "./styles/Theme";
 import SearchInput from "./components/SearchInput";
-import { LogOut, Grid, Users, Calendar, Chrome } from "react-feather";
+import {
+  LogOut,
+  Grid,
+  Users,
+  Calendar,
+  Chrome,
+  User,
+  Menu,
+} from "react-feather";
+import vibesImage from "./assets/pm2.jpeg";
+import { Sidebar } from "./components/Sidebar";
 
 //Views
 import Login from "./views/Login";
@@ -31,7 +41,7 @@ import AuthContext from "./context/Authentication/authContext";
 import AuthState from "./context/Authentication/authState";
 import UserState from "./context/User/userState";
 import AdminState from "./context/Admin/adminState";
-import { Header } from "./components/Header";
+// import { Header } from "./components/Header";
 
 const AuthRoute = (props) => {
   const authContext = useContext(AuthContext);
@@ -100,52 +110,118 @@ const MainDashboard = () => {
   const onSelect = (i) => {
     setSelected(i);
   };
+  const [dropdown, setDropdown] = useState(false);
+  const [slider, setSlider] = useState(false);
   return (
     <div>
-      <Header appName="vibes" username="Dani" title="Dashboard" />
-      <div className="flex min-h-screen font-body text-_11" id="dashboard">
-        <aside className="select-none max-w-xs w-60 h-screen overflow-y-scroll overflow-hidden bg-gradient sticky top-0 bg-_1 text-white flex flex-col justify-between">
-          <div className="">
-            <div className="block w-full">
-              <ul className="">
-                {links.map((item) => (
-                  <li
-                    className="flex flex-row justify-start items-center pl-6 space-x-2 py-4"
-                    id={location.pathname == item.href ? "active" : ""}
-                  >
-                    {item.icon}
-                    <a
-                      onClick={() => onSelect(item)}
-                      className="px-2 text-black"
-                      href={item.href}
-                    >
-                      {item.label}
-                    </a>
-                  </li>
-                ))}
-                <li className="flex flex-row justify-start items-center pl-6 space-x-2 py-4">
-                  <LogOut color="black" />
-                  <a className="px-2 text-black" onClick={authContext.logout}>
-                    Logout
-                  </a>
-                </li>
-              </ul>
+      <div className="w-full h-20" id="header">
+        <div className="flex flex-row justify-between p-5">
+          <div className="flex flex-row justify-center items-center space-x-2">
+            <div className="hidden md:flex lg:flex xl:flex space-x-2">
+              <img
+                className="rounded-full w-11 h-11 bg-white text-white"
+                src={vibesImage}
+                alt="logo"
+              />
+              <a className="py-2" href="#">
+                <span className="text-white ">Dashboard</span>
+              </a>
+            </div>
+            <div className="visible md:invisible lg:invisible text-white">
+              <Menu
+                onClick={() => {
+                  setSlider(!slider);
+                }}
+                color="white"
+              />
             </div>
           </div>
 
-          <div className="flex items-center pb-4 mt-6">
-            <img
-              src=""
-              alt="Vibes logo"
-              className="rounded-lg mr-4 w-12 h-12 bg-white border inline-flex items-center justify-center"
-            />
-            <div className="flex-1 flex flex-col justify-start">
-              <p className="font-bold text-black">Daniel</p>
-              <p className="tracking-widest text-xs text-black">Staff</p>
+          <div className="flex flex-row justify-center items-center space-x-4">
+            <span className="text-white">Hi, Dani</span>
+            <button
+              onClick={() => {
+                setDropdown(!dropdown);
+              }}
+            >
+              <div className="w-10 h-10 bg-gray-light rounded-full flex justify-center items-center">
+                <User color="white" />
+              </div>
+            </button>
+          </div>
+        </div>
+        {dropdown ? (
+          <div
+            class="origin-top-right absolute right-0 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+            role="menu"
+            aria-orientation="vertical"
+            aria-labelledby="menu-button"
+            tabindex="-1"
+          >
+            <div class="py-1" role="none">
+              <a
+                onClick={authContext.logout}
+                className="text-gray-700 font-bold block w-full text-left px-4 py-2 text-sm"
+                role="menuitem"
+                tabindex="-1"
+                id="menu-item-3"
+              >
+                Sign out
+              </a>
             </div>
           </div>
-        </aside>
-        <main className="flex-1 relative">
+        ) : null}
+      </div>
+      <div className="flex min-h-screen font-body text-_11" id="dashboard">
+        {slider ? (
+          <div className="flex relative z-40">
+            <Sidebar />
+          </div>
+        ) : null}
+        <div className="hidden md:flex lg:flex xl:flex">
+          <aside className="select-none max-w-xs w-60 h-screen overflow-y-scroll overflow-hidden bg-gradient sticky top-0 bg-_1 text-white flex flex-col justify-between">
+            <div className="">
+              <div className="block w-full">
+                <ul className="">
+                  {links.map((item) => (
+                    <li
+                      className="flex flex-row justify-start items-center pl-6 space-x-2 py-4"
+                      id={location.pathname == item.href ? "active" : ""}
+                    >
+                      {item.icon}
+                      <a
+                        onClick={() => onSelect(item)}
+                        className="px-2 text-black"
+                        href={item.href}
+                      >
+                        {item.label}
+                      </a>
+                    </li>
+                  ))}
+                  <li className="flex flex-row justify-start items-center pl-6 space-x-2 py-4">
+                    <LogOut color="black" />
+                    <a className="px-2 text-black" onClick={authContext.logout}>
+                      Logout
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="flex items-center pb-4 mt-6">
+              <img
+                src=""
+                alt="Vibes logo"
+                className="rounded-lg mr-4 w-12 h-12 bg-white border inline-flex items-center justify-center"
+              />
+              <div className="flex-1 flex flex-col justify-start">
+                <p className="font-bold text-black">Daniel</p>
+                <p className="tracking-widest text-xs text-black">Staff</p>
+              </div>
+            </div>
+          </aside>
+        </div>
+        <main className="flex-1">
           <div className="flex text-blue-300 sticky bg-offwhite top-0 shadow justify-between z-40">
             {/* <SearchInput
             value={""}
@@ -155,7 +231,7 @@ const MainDashboard = () => {
           /> */}
             {/* <ToastContainer /> */}
           </div>
-          <section className="relative z-10 py-10 px-4">
+          <section className="relative py-10 px-4">
             <Switch>
               <ProtectedRoute exact path="/dashboard" component={Dashboard} />
               <ProtectedRoute

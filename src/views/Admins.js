@@ -2,10 +2,10 @@ import React, { useState, useContext, useEffect } from "react";
 import { Plus } from "react-feather";
 import { Modal, Card } from "@wigxel/react-components/lib/cards";
 import { Table } from "../components/Table";
-import { isStatus } from "../components/Badge";
+// import { isStatus } from "../components/Badge";
 import { HeadingGroup } from "../components/Typography/Heading";
 import AdminContext from "../context/Admin/adminContect";
-import PageLoader from "./Loader";
+// import PageLoader from "./Loader";
 import { useForm } from "react-hook-form";
 
 export default function Scanners() {
@@ -30,7 +30,6 @@ export default function Scanners() {
   }, []);
 
   const doCreateAdmin = async (formData) => {
-    console.log(formData);
     adminContext
       .addAdmin(
         formData.name,
@@ -39,6 +38,7 @@ export default function Scanners() {
         formData.username
       )
       .then((res) => {
+        alert("Successful");
         window.location.reload(false);
       })
       .catch((err) => {
@@ -67,13 +67,13 @@ export default function Scanners() {
           </button>
         </div>
       </div>
-      <div className="ml-10">
-        <Table
-          columns={["S/N", "Name", "Username", "Email", "Date Created", ""]}
-          items={admins}
-          renderRow={RenderPage}
-        />
-      </div>
+
+      <Table
+        columns={["S/N", "Name", "Username", "Email", "Date Created", ""]}
+        items={admins}
+        renderRow={RenderPage}
+      />
+
       <Modal name="create-scanner" size="sm">
         <Card style={{ backgroundColor: "white" }}>
           <HeadingGroup
@@ -168,13 +168,14 @@ const RenderPage = (item, index) => {
   const deleteUser = async (user) => {
     try {
       await adminContext.deleteUser(user);
+      alert("Successfully deleted");
       window.location.reload(false);
     } catch (e) {
       console.log(e);
     }
   };
   return (
-    <tr className={`${index % 2 === 0 ? "bg-gray-light" : ""}`}>
+    <tr className={`${index % 2 === 0 ? "bg-green-100" : ""}`}>
       {[
         index + 1,
         item.name,

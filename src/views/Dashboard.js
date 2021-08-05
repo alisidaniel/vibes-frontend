@@ -51,39 +51,51 @@ export default function Dashboard() {
         {loading ? (
           <PageLoader />
         ) : (
-          <div className="flex flex-row p-6 justify-around items-around bg-white w-full h-32  shadow-lg">
-            <div className="flex flex-row justify-around itmes-around space-x-12">
-              <div className="grid-cols-1 justify-center">
-                <div className="text-center py-2">
-                  <span id="h1">{admins.length}</span>
-                </div>
-                <div className="flex flex-row justify-center items-center space-x-2">
-                  <div className="bg-green-500 w-3 h-3 rounded-full"></div>
-                  <span id="dashboardText">ADMINS</span>
-                </div>
-              </div>
-              <div className="border"></div>
-            </div>
-            <div className="flex flex-row justify-around itmes-around space-x-24">
-              <div className="grid-cols-1 justify-center">
-                <div className="text-center py-2">
-                  <span id="h1">{events.length}</span>
-                </div>
-                <div className="flex flex-row justify-center items-center space-x-2">
-                  <div className="bg-red-500 w-3 h-3 rounded-full"></div>
-                  <span id="dashboardText">EVENTS</span>
+          <div class="min-h-screen flex justify-center">
+            <div class="max-w-screen-xl w-full px-4 py-12 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+              <div class="flex flex-col h-40 flex-1 px-4 py-12 bg-white rounded-lg shadow-lg event-card">
+                <div class="flex-1">
+                  <div className="text-center py-2">
+                    <span className="text-white" id="h1">
+                      {admins.length}
+                    </span>
+                  </div>
+                  <div className="flex flex-row justify-center items-center space-x-2">
+                    <div className="bg-green-500 w-3 h-3 rounded-full"></div>
+                    <span className="text-white" id="dashboardText">
+                      ADMINS
+                    </span>
+                  </div>
                 </div>
               </div>
-              <div className="border"></div>
-            </div>
-            <div className="">
-              <div className="grid-cols-1 justify-center">
-                <div className="text-center py-2">
-                  <span id="h1">{scanners.length}</span>
+              <div class="flex flex-col h-40 flex-1 px-4 py-12 rounded-lg shadow-lg event-card2">
+                <div class="flex-1">
+                  <div className="text-center py-2">
+                    <span className="text-white" id="h1">
+                      {events.length}
+                    </span>
+                  </div>
+                  <div className="flex flex-row justify-center items-center space-x-2">
+                    <div className="bg-red-500 w-3 h-3 rounded-full"></div>
+                    <span className="text-white" id="dashboardText">
+                      EVENTS
+                    </span>
+                  </div>
                 </div>
-                <div className="flex flex-row justify-center items-center space-x-2">
-                  <div className="bg-purple-500 w-3 h-3 rounded-full"></div>
-                  <span id="dashboardText">SCANNNERS</span>
+              </div>
+              <div class="flex flex-col h-40 flex-1 px-4 py-12 bg-white rounded-lg shadow-lg event-card3">
+                <div class="flex-1">
+                  <div className="text-center py-2">
+                    <span className="text-white" id="h1">
+                      {scanners.length}
+                    </span>
+                  </div>
+                  <div className="flex flex-row justify-center items-center space-x-2">
+                    <div className="bg-purple-500 w-3 h-3 rounded-full"></div>
+                    <span className="text-white" id="dashboardText">
+                      SCANNNERS
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
