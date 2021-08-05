@@ -4,54 +4,219 @@ import qrImage from "../assets/qr.png";
 
 export default function LandingPage() {
   return (
-    <div className="min-w-screen min-h-screen p-10" id="body">
-      <div className="flex flex-row justify-between min-w-full">
-        <div className="flex flex-row justify-center items-center space-x-2">
-          <img className="rounded-full w-11 h-11" src={vibesImage} alt="logo" />
-          <a href="#">
-            <span id="title">Vibes Scanner</span>
-          </a>
+    <div class="grid grid-cols-1 md:grid-cols-4 grid-rows-3 gap-4">
+      <div>
+        <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+          <div class="md:flex">
+            <div class="p-8">
+              <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
+                Case study
+              </div>
+              <a
+                href="#"
+                class="block mt-1 text-lg leading-tight font-medium text-black hover:underline"
+              >
+                Finding customers for your new business
+              </a>
+              <p class="mt-2 text-gray-500">
+                Getting a new business off the ground is a lot of hard work.
+                Here are five ideas you can use to find your first customers.
+              </p>
+            </div>
+          </div>
         </div>
-        <div>
-          <a
-            href="/login"
-            className="border border-white text-white p-0 px-4 py-2 rounded-lg hover:bg-white hover:text-black"
-          >
-            Sign In
-          </a>
-          {/* <button>Login</button> */}
+      </div>
+      <div>
+        <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+          <div class="md:flex">
+            <div class="p-8">
+              <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
+                Case study
+              </div>
+              <a
+                href="#"
+                class="block mt-1 text-lg leading-tight font-medium text-black hover:underline"
+              >
+                Finding customers for your new business
+              </a>
+              <p class="mt-2 text-gray-500">
+                Getting a new business off the ground is a lot of hard work.
+                Here are five ideas you can use to find your first customers.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+          <div class="md:flex">
+            <div class="p-8">
+              <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
+                Case study
+              </div>
+              <a
+                href="#"
+                class="block mt-1 text-lg leading-tight font-medium text-black hover:underline"
+              >
+                Finding customers for your new business
+              </a>
+              <p class="mt-2 text-gray-500">
+                Getting a new business off the ground is a lot of hard work.
+                Here are five ideas you can use to find your first customers.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+          <div class="md:flex">
+            <div class="p-8">
+              <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
+                Case study
+              </div>
+              <a
+                href="#"
+                class="block mt-1 text-lg leading-tight font-medium text-black hover:underline"
+              >
+                Finding customers for your new business
+              </a>
+              <p class="mt-2 text-gray-500">
+                Getting a new business off the ground is a lot of hard work.
+                Here are five ideas you can use to find your first customers.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+          <div class="md:flex">
+            <div class="p-8">
+              <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
+                Case study
+              </div>
+              <a
+                href="#"
+                class="block mt-1 text-lg leading-tight font-medium text-black hover:underline"
+              >
+                Finding customers for your new business
+              </a>
+              <p class="mt-2 text-gray-500">
+                Getting a new business off the ground is a lot of hard work.
+                Here are five ideas you can use to find your first customers.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+          <div class="md:flex">
+            <div class="p-8">
+              <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
+                Case study
+              </div>
+              <a
+                href="#"
+                class="block mt-1 text-lg leading-tight font-medium text-black hover:underline"
+              >
+                Finding customers for your new business
+              </a>
+              <p class="mt-2 text-gray-500">
+                Getting a new business off the ground is a lot of hard work.
+                Here are five ideas you can use to find your first customers.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+          <div class="md:flex">
+            <div class="p-8">
+              <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
+                Case study
+              </div>
+              <a
+                href="#"
+                class="block mt-1 text-lg leading-tight font-medium text-black hover:underline"
+              >
+                Finding customers for your new business
+              </a>
+              <p class="mt-2 text-gray-500">
+                Getting a new business off the ground is a lot of hard work.
+                Here are five ideas you can use to find your first customers.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+          <div class="md:flex">
+            <div class="p-8">
+              <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
+                Case study
+              </div>
+              <a
+                href="#"
+                class="block mt-1 text-lg leading-tight font-medium text-black hover:underline"
+              >
+                Finding customers for your new business
+              </a>
+              <p class="mt-2 text-gray-500">
+                Getting a new business off the ground is a lot of hard work.
+                Here are five ideas you can use to find your first customers.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+          <div class="md:flex">
+            <div class="p-8">
+              <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
+                Case study
+              </div>
+              <a
+                href="#"
+                class="block mt-1 text-lg leading-tight font-medium text-black hover:underline"
+              >
+                Finding customers for your new business
+              </a>
+              <p class="mt-2 text-gray-500">
+                Getting a new business off the ground is a lot of hard work.
+                Here are five ideas you can use to find your first customers.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+          <div class="md:flex">
+            <div class="p-8">
+              <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
+                Case study
+              </div>
+              <a
+                href="#"
+                class="block mt-1 text-lg leading-tight font-medium text-black hover:underline"
+              >
+                Finding customers for your new business
+              </a>
+              <p class="mt-2 text-gray-500">
+                Getting a new business off the ground is a lot of hard work.
+                Here are five ideas you can use to find your first customers.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* <div className="lg:flex md:flex lg:flex-row md:flex-row justify-between pt-36 xs:grid sm:grid">
-        <div className="">
-          <div className="py-4">
-            <p id="text1">Scan and Verify Qr code</p>
-            <p id="text1">in seconds!</p>
-          </div>
-          <p id="text2">
-            This scanner only works with QR codes generated from Vibes tickets
-          </p>
-          <p id="text2">
-            Attempts to use otherwise is prosecutable under the law
-          </p>
-          <p id="text2">All rights are reserved to vibes SA.</p>
-          <div className="pt-10">
-            <a
-              href="/home"
-              className="bg-black text-white px-12 py-2 rounded-lg"
-            >
-              Get Started
-            </a>
-          </div>
-        </div>
-        <div className="">
-          <img className="w-100 h-96" src={qrImage} alt="logo" />
-        </div>
-      </div>
-      <span className="flex justify-center items-center" id="footer">
-        © Vibes SA Inc
-      </span> */}
+      <div>9</div>
     </div>
   );
 }
