@@ -28,14 +28,6 @@ export const Header = ({
               <span className="text-white ">{title}</span>
             </a>
           </div>
-          <div className="visible md:invisible lg:invisible text-white">
-            <Menu
-              onClick={() => {
-                setSlider(!slider);
-              }}
-              color="white"
-            />
-          </div>
         </div>
         {slider ? <Sidebar /> : null}
         <div className="flex flex-row justify-center items-center space-x-4">

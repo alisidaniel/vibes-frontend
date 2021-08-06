@@ -53,8 +53,8 @@ export const TicketModel4 = () => {
       <Card style={{ backgroundColor: "white" }}>
         <div className="grid justify-center items-center">
           <HeadingGroup className="text-center" heading="Error" />
-          <img className="w-10 ml-36" src={failed} alt="error logo" />
-          <span>Something went wrong! Refresh and Try Again.</span>
+          <img className="w-10 ml-10" src={failed} alt="error logo" />
+          <span>Try Again.</span>
         </div>
       </Card>
     </Modal>
