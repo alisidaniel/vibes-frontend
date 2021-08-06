@@ -15,7 +15,7 @@ export default function LandingPage() {
         <div className="py-2">
           <a
             href="/login"
-            className="border border-white text-white p-0 px-4 py-2 rounded-lg hover:bg-white hover:text-black"
+            className="border border-white text-white sm:text-xs sm:px-2 p-0 px-4 py-2 rounded-lg hover:bg-white hover:text-black"
           >
             Sign In
           </a>
