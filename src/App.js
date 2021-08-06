@@ -138,7 +138,11 @@ const MainDashboard = () => {
           </div>
 
           <div className="flex flex-row justify-center items-center space-x-4">
-            <span className="text-white">Hi, Dani</span>
+            <span className="text-white">
+              {authContext.user == null
+                ? ``
+                : `Hi, ${authContext.user.user.username}`}
+            </span>
             <button
               onClick={() => {
                 setDropdown(!dropdown);
@@ -159,7 +163,7 @@ const MainDashboard = () => {
             tabindex="-1"
           >
             <div class="py-1" role="none">
-              <a
+              {/* <a
                 onClick={authContext.logout}
                 className="text-gray-700 font-bold block w-full text-left px-4 py-2 text-sm"
                 role="menuitem"
@@ -167,7 +171,7 @@ const MainDashboard = () => {
                 id="menu-item-3"
               >
                 Sign out
-              </a>
+              </a> */}
             </div>
           </div>
         ) : null}

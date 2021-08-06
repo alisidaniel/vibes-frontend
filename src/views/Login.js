@@ -42,6 +42,17 @@ export default function Login() {
             // toast.error("Invalid email or password.");
             btnLoader.removeAttribute("disabled", "");
             btnLoader.innerHTML = "Login";
+            alert("Invalid login");
+          }
+          if (res.response.status == 401) {
+            btnLoader.removeAttribute("disabled", "");
+            btnLoader.innerHTML = "Login";
+            alert("Invalid login");
+          }
+          if (res.response.status == 403) {
+            btnLoader.removeAttribute("disabled", "");
+            btnLoader.innerHTML = "Login";
+            alert("User Disabled");
           }
         })
         .catch(function (err) {

@@ -14,6 +14,7 @@ export const Header = ({
   const [dropdown, setDropdown] = useState(false);
   const [slider, setSlider] = useState(false);
   const authContext = useContext(AuthContext);
+
   return (
     <div className="w-full h-20 absolute" id="header">
       <div className="flex flex-row justify-between p-5">
@@ -31,7 +32,11 @@ export const Header = ({
         </div>
         {slider ? <Sidebar /> : null}
         <div className="flex flex-row justify-center items-center space-x-4">
-          <span className="text-white">Hi, Dani</span>
+          <span className="text-white">
+            {authContext.user == null
+              ? ``
+              : `Hi, ${authContext.user.user.username}`}
+          </span>
           <button
             onClick={() => {
               setDropdown(!dropdown);
