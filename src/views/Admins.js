@@ -2,11 +2,11 @@ import React, { useState, useContext, useEffect } from "react";
 import { Plus } from "react-feather";
 import { Modal, Card } from "@wigxel/react-components/lib/cards";
 import { Table } from "../components/Table";
-// import { isStatus } from "../components/Badge";
 import { HeadingGroup } from "../components/Typography/Heading";
 import AdminContext from "../context/Admin/adminContect";
-// import PageLoader from "./Loader";
 import { useForm } from "react-hook-form";
+import Pagination from "../components/Pagination";
+import moment from "moment";
 
 export default function Scanners() {
   const {
@@ -45,6 +45,16 @@ export default function Scanners() {
         console.log(err);
       });
   };
+
+    //Pagination hooks
+    const [currentPage, setCurrentPage] = useState(1);
+    const [perPage] = useState(50);
+    const indexOfLastPage = currentPage * perPage;
+    const indexOfFirstPage = indexOfLastPage - perPage;
+    const currentPerPage = admins.slice(indexOfFirstPage, indexOfLastPage);
+
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <section className="px-4 py-4 container mx-auto max-w-screen-lg select-none">
       <div className="flex flex justify-between items-between mb-2">
@@ -70,9 +80,10 @@ export default function Scanners() {
 
       <Table
         columns={["S/N", "Name", "Username", "Email", "Date Created", ""]}
-        items={admins}
+        items={currentPerPage}
         renderRow={RenderPage}
       />
+      <Pagination perPage={perPage} totalData={admins.length} paginate={paginate} />
 
       <Modal name="create-scanner" size="sm">
         <Card style={{ backgroundColor: "white" }}>
@@ -181,7 +192,7 @@ const RenderPage = (item, index) => {
         item.name,
         item.username,
         item.email,
-        item.created_at,
+        moment(item.created_at).fromNow(),
         "delete",
       ].map((text, idx) => (
         <td

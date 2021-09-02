@@ -6,6 +6,8 @@ import { Header } from "../components/Header";
 import logo1 from "../assets/01.png";
 import UserContext from "../context/User/userContext";
 import PageLoader from "./Loader";
+import moment from 'moment';
+import Pagination from "../components/Pagination";
 
 export default function Events() {
   const history = useHistory();
@@ -22,6 +24,16 @@ export default function Events() {
       })
       .catch((err) => {});
   }, []);
+
+    //Pagination hooks
+    const [currentPage, setCurrentPage] = useState(1);
+    const [perPage] = useState(50);
+    const indexOfLastPage = currentPage * perPage;
+    const indexOfFirstPage = indexOfLastPage - perPage;
+    const currentPerPage = events.slice(indexOfFirstPage, indexOfLastPage);
+
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <div className="w-full h-screen w-screen">
       <Header
@@ -62,7 +74,7 @@ export default function Events() {
                   <p>Total Scan</p>
                 </div>
               </div>
-              {events.map((item) => (
+              {currentPerPage.map((item) => (
                 <Link
                   to={{
                     pathname: "/events/history",
@@ -71,10 +83,11 @@ export default function Events() {
                 >
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 justify-between items-between shadow p-5 mt-4">
                     <p className="text-purple-500">{item.name}</p>
-                    <p className="text-sm">{item.created_at}</p>
+                    <p className="text-sm">{moment(item.created_at).fromNow()}</p>
                   </div>
                 </Link>
               ))}
+              <Pagination perPage={perPage} totalData={events.length} paginate={paginate} />
             </div>
           )}
         </div>

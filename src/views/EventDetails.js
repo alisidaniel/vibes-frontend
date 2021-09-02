@@ -1,15 +1,25 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, {useState} from "react";
 import { Table } from "../components/Table";
 import { StatusBadge, isStatus } from "../components/Badge";
 import { Header } from "../components/Header";
 import { ArrowLeft } from "react-feather";
 import RefreshButton from "../components/Buttons/RefreshButton";
 import { useHistory } from "react-router-dom";
+import moment from "moment";
+import Pagination from "../components/Pagination";
 
 export default function EventDetails() {
   const history = useHistory();
   const { state } = history.location;
   const { data } = state;
+
+    //Pagination hooks
+    const [currentPage, setCurrentPage] = useState(1);
+    const [perPage] = useState(50);
+    const indexOfLastPage = currentPage * perPage;
+    const indexOfFirstPage = indexOfLastPage - perPage;
+    const currentPerPage = data.tickets.slice(indexOfFirstPage, indexOfLastPage);
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div className="w-full h-screen w-screen">
@@ -30,9 +40,10 @@ export default function EventDetails() {
         </div>
         <Table
           columns={["S/N", "Ticket", "Date"]}
-          items={data.tickets}
+          items={currentPerPage}
           renderRow={RenderPage}
         />
+        <Pagination perPage={perPage} totalData={data.tickets.length} paginate={paginate} />
       </div>
     </div>
   );
@@ -44,7 +55,7 @@ const RenderPage = (item, index) => {
       {[
         index + 1,
         `${item.ticket.substring(0, 7)}..`,
-        item.created_at.substring(0, 10),
+        moment(item.created_at).fromNow(),
       ].map((text, idx) => (
         <td
           key={idx}

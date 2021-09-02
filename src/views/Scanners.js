@@ -6,6 +6,7 @@ import { HeadingGroup } from "../components/Typography/Heading";
 import AdminContext from "../context/Admin/adminContect";
 import { useForm } from "react-hook-form";
 import Pagination from "../components/Pagination";
+import moment from "moment";
 
 export default function Scanners() {
   const { toggle } = Modal.useModal();
@@ -21,13 +22,11 @@ export default function Scanners() {
   useEffect(() => {
     adminContext.getEvents().then((res) => {
       setEvents(res.data.data);
-      console.log(res.data.data);
     });
     adminContext
       .getScannersUsers()
       .then((res) => {
         setScanners(res.data.data);
-        // console.log(res.data.data);
       })
       .catch((err) => {});
   }, []);
@@ -51,7 +50,7 @@ export default function Scanners() {
 
     //Pagination hooks
     const [currentPage, setCurrentPage] = useState(1);
-    const [perPage, setPerPage] = useState(5);
+    const [perPage] = useState(50);
     const indexOfLastPage = currentPage * perPage;
     const indexOfFirstPage = indexOfLastPage - perPage;
     const currentPerPage = scanners.slice(indexOfFirstPage, indexOfLastPage);
@@ -224,7 +223,7 @@ const RenderPage = (item, index) => {
         item.username,
         `${item.event ? item.event.name : "-"}`,
         "",
-        item.created_at,
+        moment(item.created_at).fromNow(),
       ].map((text, idx) => (
         <td
           key={idx}

@@ -1,10 +1,12 @@
 import React, { useState, useContext, useEffect } from "react";
-import { List, ArrowLeft } from "react-feather";
+import { ArrowLeft } from "react-feather";
 import { Link, useHistory } from "react-router-dom";
 import RefreshButton from "../components/Buttons/RefreshButton";
 import logo1 from "../assets/01.png";
 import AdminContext from "../context/Admin/adminContect";
 import PageLoader from "./Loader";
+import moment from "moment";
+import Pagination from "../components/Pagination";
 
 export default function EventList() {
   const history = useHistory();
@@ -23,6 +25,15 @@ export default function EventList() {
         console.log(err);
       });
   }, []);
+
+  //Pagination hooks
+  const [currentPage, setCurrentPage] = useState(1);
+  const [perPage] = useState(50);
+  const indexOfLastPage = currentPage * perPage;
+  const indexOfFirstPage = indexOfLastPage - perPage;
+  const currentPerPage = events.slice(indexOfFirstPage, indexOfLastPage);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <section className="px-4 py-4 container mx-auto max-w-screen-lg select-none">
       <div>
@@ -55,7 +66,7 @@ export default function EventList() {
                 <p>Total Events</p>
               </div>
             </div>
-            {events.map((item, index) => (
+            {currentPerPage.map((item, index) => (
               <Link
                 to={{
                   pathname: "/dashboard/events/tickets",
@@ -63,12 +74,13 @@ export default function EventList() {
                 }}
               >
                 <div className="flex flex-row justify-between items-between shadow p-5 mt-4">
-                  <p className="text-purple-500">{item.name}</p>
-                  <p>{item.created_at}</p>
-                  <p>{item.tickets.length} scan(s)</p>
+                  <span className="text-purple-500">{item.name}</span>
+                  <span>{moment(item.created_at).fromNow()}</span>
+                  <span>{item.tickets.length} scan(s)</span>
                 </div>
               </Link>
             ))}
+            <Pagination perPage={perPage} totalData={events.length} paginate={paginate} />
           </div>
         )}
       </div>
