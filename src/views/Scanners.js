@@ -5,6 +5,7 @@ import { Table } from "../components/Table";
 import { HeadingGroup } from "../components/Typography/Heading";
 import AdminContext from "../context/Admin/adminContect";
 import { useForm } from "react-hook-form";
+import Pagination from "../components/Pagination";
 
 export default function Scanners() {
   const { toggle } = Modal.useModal();
@@ -16,6 +17,7 @@ export default function Scanners() {
   const [scanners, setScanners] = useState([]);
   const [events, setEvents] = useState([]);
   const adminContext = useContext(AdminContext);
+
   useEffect(() => {
     adminContext.getEvents().then((res) => {
       setEvents(res.data.data);
@@ -25,7 +27,7 @@ export default function Scanners() {
       .getScannersUsers()
       .then((res) => {
         setScanners(res.data.data);
-        console.log(res.data.data);
+        // console.log(res.data.data);
       })
       .catch((err) => {});
   }, []);
@@ -46,6 +48,15 @@ export default function Scanners() {
         console.log(err);
       });
   };
+
+    //Pagination hooks
+    const [currentPage, setCurrentPage] = useState(1);
+    const [perPage, setPerPage] = useState(5);
+    const indexOfLastPage = currentPage * perPage;
+    const indexOfFirstPage = indexOfLastPage - perPage;
+    const currentPerPage = scanners.slice(indexOfFirstPage, indexOfLastPage);
+
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <section className="px-2 py-2 container mx-auto max-w-screen-lg select-none">
@@ -73,9 +84,10 @@ export default function Scanners() {
 
         <Table
           columns={["S/N", "Username", "Event", "Status", "Date"]}
-          items={scanners}
+          items={currentPerPage}
           renderRow={RenderPage}
         />
+        <Pagination perPage={perPage} totalData={scanners.length} paginate={paginate} />
 
         <Modal name="create-scanner" size="sm">
           <Card style={{ backgroundColor: "white" }}>
