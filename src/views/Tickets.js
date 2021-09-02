@@ -10,7 +10,7 @@ import moment from "moment";
 export default function Tickets() {
   const history = useHistory();
   const { state } = history.location;
-  const { tickets, user } = state;
+  const { tickets } = state;
 
   // Pagination hooks
   const [currentPage, setCurrentPage] = useState(1);
