@@ -35,9 +35,8 @@ export default function EventList() {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <section className="px-4 py-4 container mx-auto max-w-screen-lg select-none">
+    <div className="w-full h-screen select-none">
       <div>
-        <div className="">
           <div className="flex flex-row justify-between">
             <RefreshButton
               onClick={() => window.location.reload(false)}
@@ -45,19 +44,18 @@ export default function EventList() {
             />
             <button
               onClick={() => history.goBack()}
-              className="flex flex-row shadow px-8 text-purple-400 px-2 py-2 rounded-lg"
+              className="flex flex-row shadow text-purple-400 px-2 py-2 rounded-lg"
             >
               <ArrowLeft className="text-purple-400" color="purple" />
               <span> Back</span>
             </button>
-          </div>
         </div>
         {loading ? (
           <PageLoader />
         ) : (
           <div>
             <div className="flex flex-row py-3">
-              <div className="w-48 h-28 shadow-lg border" id="box">
+              <div className="w-36 h-28 shadow-lg border" id="box">
                 <span className="font-bold p-4">Events</span>
                 <img className="w-36 h-20" src={logo1} alt="logo" />
               </div>
@@ -84,6 +82,6 @@ export default function EventList() {
           </div>
         )}
       </div>
-    </section>
+    </div>
   );
 }

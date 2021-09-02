@@ -137,20 +137,21 @@ export default function Home() {
         <div id="qr-result" hidden="">
           <b></b> <span className="text-white" id="outputData"></span>
         </div>
-        <div className="grid justify-center items-center">
-          <canvas className="ml-0" hidden="" id="qr-canvas"></canvas>
-          <p className="pl-10 mb-2" id="qrTitle">
-            Scan Qr Code
-          </p>
-          <img
-            className="h-56 ml-5"
-            src={qr1}
-            hidden=""
-            id="qrImg"
-            alt="scan"
-          />
-        </div>
-        <div className="pl-12 -mt-24">
+        <div className="flex grid justify-center items-center">
+          <canvas hidden="" id="qr-canvas"></canvas>
+          <div className="grid justify-center items-center">
+            <p className="mb-3" id="qrTitle">
+              Scan Qr Code
+            </p>
+            <img
+              className="h-24 pl-8"
+              src={qr1}
+              hidden=""
+              id="qrImg"
+              alt="scan"
+            />
+          </div>
+          <div className="pl-10">
           <p className="py-2">Easy and safe way to verify authentic tickets</p>
 
           <div className="flex flex-row space-x-2">
@@ -172,6 +173,7 @@ export default function Home() {
               <p className="text-sm font-bold">Stop Scan</p>
             </button>
           </div>
+        </div>
         </div>
       </div>
       <TicketModel1 />

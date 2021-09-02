@@ -1,5 +1,5 @@
-import React, { useState, useContext, useEffect } from "react";
-import vibesImage from "../assets/pm2.jpeg";
+import React, { } from "react";
+import vibesImage from "../assets/pm.png";
 import qrImage from "../assets/qr.png";
 
 export default function LandingPage() {
@@ -7,7 +7,7 @@ export default function LandingPage() {
     <div className="w-auto min-h-screen p-10" id="body">
       <div className="flex flex-row justify-between min-w-full">
         <div className="flex flex-row justify-center items-center space-x-2">
-          <img className="rounded-full w-11 h-11" src={vibesImage} alt="logo" />
+          <img className="rounded-full bg-black w-11 h-11" src={vibesImage} alt="logo" />
           <a href="#">
             <span id="title">Vibes Scanner</span>
           </a>

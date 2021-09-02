@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Menu, User } from "react-feather";
 import AuthContext from "../context/Authentication/authContext";
-import vibesImage from "../assets/pm2.jpeg";
+import vibesImage from "../assets/pm.png";
 import { Sidebar } from "./Sidebar";
 export const Header = ({
   appName,
@@ -21,7 +21,7 @@ export const Header = ({
         <div className="flex flex-row justify-center items-center space-x-2">
           <div className="hidden md:flex lg:flex xl:flex space-x-2">
             <img
-              className="rounded-full w-11 h-11 bg-white text-white"
+              className="rounded-full bg-black w-11 h-11 text-white"
               src={vibesImage}
               alt="logo"
             />
