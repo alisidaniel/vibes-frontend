@@ -31,6 +31,12 @@ export const Sidebar = () => {
       icon: <Chrome color="black" />,
       href: "/dashboard/scanners",
     },
+    {
+      id: 5,
+      label: "App Users",
+      icon: <Users color="black" />,
+      href: "/dashboard/app/users",
+    },
   ];
   const [selected, setSelected] = useState({ href: "/dashboard" });
   const onSelect = (i) => {
