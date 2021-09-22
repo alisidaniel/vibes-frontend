@@ -13,6 +13,7 @@ import {
   ADMIN_ERROR,
   GET_ADMINS,
   ADD_ADMIN,
+  GET_USERS,
 } from "../types";
 
 const AdminState = (props) => {
@@ -38,6 +39,19 @@ const AdminState = (props) => {
       return error;
     }
   };
+
+  const getUsers = async () => {
+    try {
+      await api.get(Constants.CSRF_COOKIE);
+      const response = await api.get("https://vibessa.com/api/fetch/all/users");
+      dispatch({ type: GET_USERS, payload: response.data });
+      return response.data;
+    } catch (error) {
+      dispatch({ type: ADMIN_ERROR, payload: error.response.data.message });
+      return error;
+    }
+  }
+
   const getAdmins = async () => {
     try {
       await api.get(Constants.CSRF_COOKIE);
@@ -131,6 +145,8 @@ const AdminState = (props) => {
         events: state.events,
         scanners: state.scanners,
         admins: state.admins,
+        users: state.users,
+        getUsers,
         addUser,
         addAdmin,
         deleteUser,

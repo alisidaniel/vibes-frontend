@@ -13,6 +13,7 @@ export const CLEAR_ERRORS = "CLEAR_ERRORS";
 // USERS TYPES
 export const USER_ERROR = "USER_ERROR";
 export const GET_USER = "GET_USER";
+export const GET_USERS = "GET_USERS";
 export const GET_USER_EVENTS = "GET_USER_EVENTS";
 export const VERIFY_QR_CODES = "VERIFY_QR_CODES";
 

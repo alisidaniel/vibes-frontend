@@ -21,6 +21,7 @@ export const RESET_PASSWORD = "/api/password/reset";
 export const FORGOT_PASSWORD = "/api/forgot/password";
 
 // USER
+// export const FETCH_USERS = '/api/fetch/all/users';
 export const FETCH_USER = "/api/profile";
 export const VERIFY_QR_CODES = "/api/ticket/scanner/verify";
 export const GET_USER_EVENTS = "/api/user/event";

@@ -35,6 +35,7 @@ import Scanners from "./views/Scanners";
 import Tickets from "./views/Tickets";
 import Admins from "./views/Admins";
 import LandingPage from "./views/LandingPage";
+import UsersApp from "./views/Users";
 
 //States
 import AuthContext from "./context/Authentication/authContext";
@@ -104,6 +105,12 @@ const MainDashboard = () => {
       label: "Scanners",
       icon: <Chrome color="black" />,
       href: "/dashboard/scanners",
+    },
+    {
+      id: 5,
+      label: "App Users",
+      icon: <Users color="black" />,
+      href: "/dashboard/app/users",
     },
   ];
   const [selected, setSelected] = useState({ href: "/dashboard" });
@@ -249,6 +256,7 @@ const MainDashboard = () => {
                 component={Tickets}
               />
               <ProtectedRoute path="/dashboard/admins" component={Admins} />
+              <ProtectedRoute path="/dashboard/app/users" component={UsersApp} />
               <Route path="*" component={NotFound} />
             </Switch>
           </section>
