@@ -36,6 +36,7 @@ import Tickets from "./views/Tickets";
 import Admins from "./views/Admins";
 import LandingPage from "./views/LandingPage";
 import UsersApp from "./views/Users";
+import Scanner1 from "./views/scanner1";
 
 //States
 import AuthContext from "./context/Authentication/authContext";
@@ -63,6 +64,7 @@ function App() {
                   <Route exact path="/" component={LandingPage} />
                   <Route path="/login" component={Login} />
                   <Route path="/dashboard" component={MainDashboard} />
+                  <Route path="/scanner1" component={Scanner1} />
                   <Route path="/forgot/password" component={ForgotPassword} />
                   <AuthRoute exact path="/home" component={Home} />
                   <AuthRoute exact path="/events" component={Events} />
