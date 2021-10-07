@@ -1,9 +1,9 @@
-import React, { useState, useContext, useEffect } from "react";
-import { Camera, Send, Database, CameraOff } from "react-feather";
+import React, { useContext, useEffect } from "react";
+import { Camera, CameraOff } from "react-feather";
 import { Header } from "../components/Header";
 import qr1 from "../assets/qr1.png";
 import { useHistory } from "react-router-dom";
-import { Modal, Card } from "@wigxel/react-components/lib/cards";
+import { Modal } from "@wigxel/react-components/lib/cards";
 import {
   TicketModel1,
   TicketModel2,

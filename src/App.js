@@ -64,9 +64,9 @@ function App() {
                   <Route exact path="/" component={LandingPage} />
                   <Route path="/login" component={Login} />
                   <Route path="/dashboard" component={MainDashboard} />
-                  <Route path="/scanner1" component={Scanner1} />
+                  {/* <Route path="/scanner1" component={Scanner1} /> */}
                   <Route path="/forgot/password" component={ForgotPassword} />
-                  <AuthRoute exact path="/home" component={Home} />
+                  <AuthRoute exact path="/home" component={Scanner1} />
                   <AuthRoute exact path="/events" component={Events} />
                   <AuthRoute path="/events/history" component={EventDetails} />
                   <Route path="*" component={NotFound} />
