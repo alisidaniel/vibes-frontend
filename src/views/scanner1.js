@@ -39,7 +39,7 @@ const Scanner1 = () => {
     const startCamera = async () => {
         qrBackgroundImg.hidden = true;
         html5QrCode.start(
-            camera, 
+          { facingMode: "environment" }, 
             {
                 fps: 10,    // Optional frame per seconds for qr code scanning
                 qrbox: 250  // Optional if you want bounded box UI
