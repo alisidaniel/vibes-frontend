@@ -71,6 +71,7 @@ export default function Login() {
           className="p-10 lg:w-7/12 md:w-5/12 sm:w-full xs:w-full rounded-lg"
           id="login"
         >
+        <a href="/">
           <div className="flex flex-row justify-center items-center space-x-2">
             <img className="rounded-lg w-11 h-11" src={vibesImage} alt="logo" />
             <span>Vibes Scanner</span>
@@ -78,6 +79,7 @@ export default function Login() {
           <div className="py-4 text-center">
             <span id="h6">Login</span>
           </div>
+        </a>
           <form onSubmit={handleSubmit(doLogin)}>
             <div className="mb-3">
               <label className="block mb-2" for="username" id="label">
